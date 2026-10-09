@@ -1,0 +1,1 @@
+export { AITriageConsole } from './AITriageConsole';

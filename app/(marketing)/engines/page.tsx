@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Script from 'next/script';
 import { Navigation, Footer } from '@/components/branding';
+import { ComplianceGrid } from '@/components/corporate';
 import { Card, InteractiveButton, Badge } from '@/components/ui';
 import {
   GitBranch,
@@ -386,6 +387,13 @@ export default function EnginesPage() {
               </a>
             </p>
           </div>
+        </div>
+      </section>
+
+      {/* Compliance Grid Section */}
+      <section className="section-padding bg-slate-bg">
+        <div className="container-max">
+          <ComplianceGrid />
         </div>
       </section>
 

@@ -133,6 +133,24 @@ export default function RootLayout({ children }: { children: React.ReactNode }):
       </head>
 
       <body className="antialiased">
+        {/* Skip to Main Content Link (Screen Reader / Keyboard Users) */}
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:p-3 focus:bg-cyan-accent focus:text-navy-950 focus:rounded-md focus:font-semibold"
+        >
+          Skip to main content
+        </a>
+
+        {/* Accessibility Announcement Region */}
+        <div
+          aria-live="polite"
+          aria-atomic="true"
+          className="sr-only"
+          id="accessibility-announcements"
+        >
+          {/* Dynamic announcements will be inserted here */}
+        </div>
+
         <div id="root">{children}</div>
 
         {/* Vercel Web Vitals (Optional) */}

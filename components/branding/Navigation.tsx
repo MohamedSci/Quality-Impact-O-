@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
 import { Logo } from './Logo';
@@ -8,6 +8,18 @@ import { Button } from '@/components/ui';
 
 export const Navigation: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
+
+  // Close menu on Escape key
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isOpen) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener('keydown', handleEscape);
+    return () => document.removeEventListener('keydown', handleEscape);
+  }, [isOpen]);
 
   // Blueprint-compliant navigation links
   const navLinks = [
@@ -27,18 +39,25 @@ export const Navigation: React.FC = () => {
   };
 
   return (
-    <nav className="sticky top-0 z-50 w-full bg-navy-950/80 backdrop-blur-md border-b border-slate-700 transition-all duration-300">
+    <nav
+      className="sticky top-0 z-50 w-full bg-navy-950/80 backdrop-blur-md border-b border-slate-700 transition-all duration-300"
+      aria-label="Primary navigation"
+    >
       <div className="container-max px-6 md:px-12 py-4 flex items-center justify-between">
         {/* Logo */}
         <Link
           href="/"
           className="flex items-center gap-2 focus-ring rounded-md flex-shrink-0 hover:opacity-80 transition-opacity"
+          aria-label="Quality Impact QA-PaaS - Home"
         >
           <Logo size="md" variant="full" />
         </Link>
 
         {/* Desktop Navigation - Center */}
-        <div className="hidden md:flex items-center gap-8">
+        <div
+          className="hidden md:flex items-center gap-8"
+          role="menubar"
+        >
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -46,6 +65,8 @@ export const Navigation: React.FC = () => {
               target={link.target}
               rel={link.target === '_blank' ? 'noopener noreferrer' : undefined}
               className="text-sm font-medium text-slate-300 hover:text-cyan-accent hover:border-b-2 hover:border-cyan-accent pb-1 border-b-2 border-transparent transition-all duration-200 focus-ring rounded-sm"
+              role="menuitem"
+              aria-label={link.target === '_blank' ? `${link.label} (opens in new window)` : link.label}
             >
               {link.label}
             </Link>
@@ -60,7 +81,7 @@ export const Navigation: React.FC = () => {
             size="sm"
             onClick={handleMarketplaceClick}
             className="border-2 border-cyan-accent text-cyan-accent hover:border-cyan-400 hover:text-cyan-400 hover:shadow-glow-cyan transition-all duration-200"
-            aria-label="Open Marketplace Portal"
+            aria-label="Open Marketplace Portal in new window"
           >
             Marketplace Portal
           </Button>
@@ -71,7 +92,7 @@ export const Navigation: React.FC = () => {
             size="sm"
             onClick={handleDeployClick}
             className="bg-cyan-accent hover:bg-cyan-500 text-white hover:shadow-glow-cyan-lg transition-all duration-200 font-semibold"
-            aria-label="Deploy Runner"
+            aria-label="Deploy Runner to marketplace"
           >
             Deploy Runner
           </Button>
@@ -81,8 +102,9 @@ export const Navigation: React.FC = () => {
         <button
           className="md:hidden p-2 hover:bg-slate-800 rounded-md transition-colors focus-ring text-slate-300 hover:text-cyan-accent"
           onClick={() => setIsOpen(!isOpen)}
-          aria-label="Toggle navigation menu"
+          aria-label={isOpen ? 'Close navigation menu' : 'Open navigation menu'}
           aria-expanded={isOpen}
+          aria-controls="mobile-navigation"
         >
           {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
@@ -90,7 +112,13 @@ export const Navigation: React.FC = () => {
 
       {/* Mobile Navigation Menu */}
       {isOpen && (
-        <div className="md:hidden bg-navy-900/95 backdrop-blur-md border-t border-slate-700 animate-fade-in">
+        <div
+          ref={mobileMenuRef}
+          id="mobile-navigation"
+          className="md:hidden bg-navy-900/95 backdrop-blur-md border-t border-slate-700 animate-fade-in"
+          role="navigation"
+          aria-label="Mobile navigation"
+        >
           <div className="container-max px-6 py-6 space-y-4">
             {/* Mobile Navigation Links */}
             {navLinks.map((link) => (
@@ -101,6 +129,8 @@ export const Navigation: React.FC = () => {
                 rel={link.target === '_blank' ? 'noopener noreferrer' : undefined}
                 className="block text-sm font-medium text-slate-300 hover:text-cyan-accent transition-colors py-2 focus-ring rounded-md px-2"
                 onClick={() => setIsOpen(false)}
+                role="menuitem"
+                aria-label={link.target === '_blank' ? `${link.label} (opens in new window)` : link.label}
               >
                 {link.label}
               </Link>
@@ -113,6 +143,7 @@ export const Navigation: React.FC = () => {
                 size="sm"
                 className="w-full border-2 border-cyan-accent text-cyan-accent hover:border-cyan-400 hover:text-cyan-400"
                 onClick={handleMarketplaceClick}
+                aria-label="Open Marketplace Portal in new window"
               >
                 Marketplace Portal
               </Button>
@@ -121,6 +152,7 @@ export const Navigation: React.FC = () => {
                 size="sm"
                 className="w-full bg-cyan-accent hover:bg-cyan-500 text-white font-semibold"
                 onClick={handleDeployClick}
+                aria-label="Deploy Runner to marketplace"
               >
                 Deploy Runner
               </Button>

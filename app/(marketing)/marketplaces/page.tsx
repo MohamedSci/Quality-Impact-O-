@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Script from 'next/script';
 import { Navigation, Footer } from '@/components/branding';
-import { MarketplaceHero } from '@/components/marketplace';
+import { MarketplaceHero, RunnerCalculator } from '@/components/marketplace';
 import { Card, Badge, Alert, InteractiveButton } from '@/components/ui';
 import {
   CheckCircle2,
@@ -486,6 +486,13 @@ export default function MarketplacesPage() {
               </a>
             </p>
           </div>
+        </div>
+      </section>
+
+      {/* Runner Cost Calculator */}
+      <section className="section-padding bg-slate-bg">
+        <div className="container-max">
+          <RunnerCalculator />
         </div>
       </section>
 
