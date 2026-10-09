@@ -111,7 +111,7 @@ export const Footer: React.FC = () => {
             </div>
 
             <div className="pt-4 border-t border-slate-700">
-              <p className="text-xs text-slate-500 font-semibold uppercase mb-3">Integrations</p>
+              <p className="text-xs text-slate-400 font-semibold uppercase mb-3">Integrations</p>
               <p className="text-xs text-slate-400 leading-relaxed">
                 Native integration with GitHub Actions, GitLab CI, Jenkins, Azure Pipelines, and
                 CircleCI.
@@ -143,7 +143,7 @@ export const Footer: React.FC = () => {
             </div>
 
             <div className="pt-4 border-t border-slate-700">
-              <p className="text-xs text-slate-500 font-semibold uppercase mb-3">Deployment</p>
+              <p className="text-xs text-slate-400 font-semibold uppercase mb-3">Deployment</p>
               <p className="text-xs text-slate-400 leading-relaxed">
                 Deploy via AWS Fargate, Azure Container Instances, or Google Cloud Run.
               </p>
@@ -174,7 +174,7 @@ export const Footer: React.FC = () => {
             </div>
 
             <div className="pt-4 border-t border-slate-700">
-              <p className="text-xs text-slate-500 font-semibold uppercase mb-3">Support</p>
+              <p className="text-xs text-slate-400 font-semibold uppercase mb-3">Support</p>
               <p className="text-xs text-slate-400 leading-relaxed">
                 <a href="mailto:support@qa-paas.com" className="text-cyan-accent hover:underline">
                   support@qa-paas.com
@@ -197,7 +197,7 @@ export const Footer: React.FC = () => {
               <Shield className="w-4 h-4 text-cyan-accent flex-shrink-0 mt-1" />
               <div className="text-xs space-y-1">
                 <p className="text-slate-300 font-semibold">Enterprise Compliance</p>
-                <p className="text-slate-500">ISO 27001 • SOC2 Type II • GDPR Ready</p>
+                <p className="text-slate-400">ISO 27001 • SOC2 Type II • GDPR Ready</p>
               </div>
             </div>
 
@@ -206,7 +206,7 @@ export const Footer: React.FC = () => {
               <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-1" />
               <div className="text-xs space-y-1">
                 <p className="text-slate-300 font-semibold">Availability</p>
-                <p className="text-slate-500">99.99% Uptime SLA • 24/7 Support</p>
+                <p className="text-slate-400">99.99% Uptime SLA • 24/7 Support</p>
               </div>
             </div>
 
@@ -231,7 +231,7 @@ export const Footer: React.FC = () => {
           </div>
 
           {/* Copyright */}
-          <div className="border-t border-slate-700/50 pt-6 flex flex-col md:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+          <div className="border-t border-slate-700/50 pt-6 flex flex-col md:flex-row items-center justify-between text-xs text-slate-400 gap-4">
             <p>&copy; {currentYear} Quality Impact OÜ. All rights reserved. Made in Estonia 🇪🇪</p>
             <div className="flex items-center gap-4">
               <a href="/legal/privacy" className="hover:text-slate-400 transition-colors">

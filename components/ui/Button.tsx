@@ -17,18 +17,18 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>, Com
 const variantStyles = {
   solid: {
     primary:
-      'bg-primary-500 text-white hover:bg-primary-600 active:bg-primary-700 disabled:bg-neutral-600 disabled:text-neutral-400',
+      'bg-primary-500 text-navy-950 hover:bg-primary-400 active:bg-primary-600 shadow-glow-cyan disabled:bg-neutral-600 disabled:text-neutral-400 disabled:shadow-none',
     secondary:
       'bg-neutral-700 text-neutral-50 hover:bg-neutral-600 active:bg-neutral-500 disabled:bg-neutral-700 disabled:text-neutral-500',
     accent:
-      'bg-accent-500 text-white hover:bg-accent-600 active:bg-accent-700 disabled:bg-neutral-600 disabled:text-neutral-400',
+      'bg-accent-500 text-navy-950 hover:bg-accent-400 active:bg-accent-600 disabled:bg-neutral-600 disabled:text-neutral-400',
     success:
-      'bg-success-500 text-white hover:bg-success-600 active:bg-success-700 disabled:bg-neutral-600 disabled:text-neutral-400',
+      'bg-success-500 text-navy-950 hover:bg-success-400 active:bg-success-600 disabled:bg-neutral-600 disabled:text-neutral-400',
     error:
       'bg-error-500 text-white hover:bg-error-600 active:bg-error-700 disabled:bg-neutral-600 disabled:text-neutral-400',
     warning:
       'bg-warning-500 text-neutral-900 hover:bg-warning-600 active:bg-warning-700 disabled:bg-neutral-600 disabled:text-neutral-400',
-    info: 'bg-info-500 text-white hover:bg-info-600 active:bg-info-700 disabled:bg-neutral-600 disabled:text-neutral-400',
+    info: 'bg-info-500 text-navy-950 hover:bg-info-400 active:bg-info-600 disabled:bg-neutral-600 disabled:text-neutral-400',
     neutral:
       'bg-neutral-500 text-white hover:bg-neutral-400 active:bg-neutral-300 disabled:bg-neutral-700 disabled:text-neutral-500',
   },
@@ -125,7 +125,7 @@ export const Button: React.FC<ButtonProps> = ({
   ...props
 }) => {
   const baseStyles =
-    'inline-flex items-center justify-center gap-2 rounded-lg transition-all duration-150 focus-ring disabled:cursor-not-allowed';
+    'inline-flex items-center justify-center gap-2 rounded-lg transition-all duration-200 focus-ring disabled:cursor-not-allowed active:scale-[0.98] select-none';
 
   // Map simple variant names to primary color
   const colorVariant =

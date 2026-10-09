@@ -97,6 +97,9 @@ const config: Config = {
           950: '#312E81',
         },
 
+        // Semantic accent alias (legacy references)
+        'accent-neural': '#818CF8',
+
         // Success Palette (Green)
         success: {
           50: '#F0FDF4',
@@ -371,8 +374,8 @@ const config: Config = {
 
         // Phase 4: Enhanced polish animations
         'flip-in': 'flip-in 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55)',
-        'float': 'float 3s ease-in-out infinite',
-        'wiggle': 'wiggle 0.7s ease-in-out infinite',
+        float: 'float 3s ease-in-out infinite',
+        wiggle: 'wiggle 0.7s ease-in-out infinite',
         'pulse-soft': 'pulse-soft 2s ease-in-out infinite',
       },
 

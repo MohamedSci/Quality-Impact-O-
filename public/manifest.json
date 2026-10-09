@@ -1,0 +1,17 @@
+{
+  "name": "QA-PaaS by Quality Impact OÜ",
+  "short_name": "QA-PaaS",
+  "description": "AI-orchestrated enterprise software testing platform. Available on AWS Marketplace, Azure DevOps, and Google Cloud.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0F172A",
+  "theme_color": "#0F172A",
+  "icons": [
+    {
+      "src": "/brand/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

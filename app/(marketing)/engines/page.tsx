@@ -223,7 +223,7 @@ export default function EnginesPage() {
                       {Object.entries(engine.metrics).map(([key, value]) => (
                         <div key={key}>
                           <p className="text-xs font-mono text-primary font-semibold">{value}</p>
-                          <p className="text-xs text-slate-500 capitalize">{key}</p>
+                          <p className="text-xs text-slate-400 capitalize">{key}</p>
                         </div>
                       ))}
                     </div>

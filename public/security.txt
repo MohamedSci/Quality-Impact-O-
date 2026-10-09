@@ -1,0 +1,7 @@
+Contact: mailto:security@qa-paas.com
+Expires: 2027-12-31T23:59:59Z
+Encryption: https://www.qa-paas.com/.well-known/pgp-key.txt
+Preferred-Languages: en
+Canonical: https://www.qa-paas.com/.well-known/security.txt
+Policy: https://www.qa-paas.com/legal/privacy
+Acknowledgments: https://www.qa-paas.com/legal/company-info

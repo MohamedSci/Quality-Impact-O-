@@ -20,9 +20,9 @@ const paddingStyles = {
 };
 
 const variantStyles = {
-  default: 'bg-neutral-800 border border-neutral-700',
-  elevated: 'bg-neutral-800 border border-neutral-700 shadow-lg',
-  flat: 'bg-neutral-800/50 border-0',
+  default: 'bg-slate-800/80 border border-slate-700 backdrop-blur-sm',
+  elevated: 'bg-slate-800 border border-slate-700 shadow-lg',
+  flat: 'bg-slate-800/50 border-0',
 };
 
 export const Card: React.FC<CardProps> = ({
@@ -35,9 +35,9 @@ export const Card: React.FC<CardProps> = ({
   testId,
   ariaLabel,
 }) => {
-  const baseStyles = 'rounded-xl transition-all duration-200';
+  const baseStyles = 'rounded-xl transition-all duration-300 will-change-transform';
   const hoverStyles = hover
-    ? 'hover:border-primary-500/50 hover:shadow-glow hover:-translate-y-1'
+    ? 'hover:border-cyan-accent/60 hover:shadow-glow-cyan hover:-translate-y-1'
     : '';
   const interactiveStyles = interactive ? 'cursor-pointer hover:bg-neutral-700/50' : '';
 

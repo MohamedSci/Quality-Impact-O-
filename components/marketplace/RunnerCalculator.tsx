@@ -105,9 +105,10 @@ export const RunnerCalculator: React.FC = () => {
               max="10000"
               value={state.testsPerMonth}
               onChange={(e) => handleTestsChange(Number(e.target.value))}
+              aria-label="Tests per month"
               className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-cyan-accent"
             />
-            <div className="flex justify-between text-xs text-slate-500">
+            <div className="flex justify-between text-xs text-slate-400">
               <span>1</span>
               <span>10,000</span>
             </div>
@@ -125,9 +126,10 @@ export const RunnerCalculator: React.FC = () => {
               max="120"
               value={state.avgDuration}
               onChange={(e) => handleDurationChange(Number(e.target.value))}
+              aria-label="Average test duration in minutes"
               className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-cyan-accent"
             />
-            <div className="flex justify-between text-xs text-slate-500">
+            <div className="flex justify-between text-xs text-slate-400">
               <span>1 min</span>
               <span>120 min</span>
             </div>
@@ -199,7 +201,7 @@ export const RunnerCalculator: React.FC = () => {
               <div className="text-xl font-bold text-slate-100">
                 ${runnerSpecs[state.runnerSize].basePrice}
               </div>
-              <div className="text-xs text-slate-500">/month</div>
+              <div className="text-xs text-slate-400">/month</div>
             </Card>
 
             <Card className="bg-navy-800/40 border-slate-700 p-4 space-y-2">
@@ -207,7 +209,7 @@ export const RunnerCalculator: React.FC = () => {
               <div className="text-xl font-bold text-cyan-accent">
                 ${calculations.monthlyExecutionCost}
               </div>
-              <div className="text-xs text-slate-500">/month</div>
+              <div className="text-xs text-slate-400">/month</div>
             </Card>
           </div>
 
@@ -215,7 +217,7 @@ export const RunnerCalculator: React.FC = () => {
           <Button
             variant="solid"
             size="lg"
-            className="w-full bg-cyan-accent hover:bg-cyan-500 text-white hover:shadow-glow-cyan-lg font-semibold"
+            className="w-full bg-cyan-accent hover:bg-cyan-400 text-navy-950 hover:shadow-glow-cyan-lg font-bold"
             onClick={() => (window.location.href = '/marketplaces#deploy')}
           >
             Deploy Runner

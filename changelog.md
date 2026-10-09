@@ -2,8 +2,106 @@
 
 All notable changes to the Quality Impact OÜ QA-PaaS Website project are documented here.
 
-**Project Status:** ✅ **COMPLETE & PRODUCTION-READY** (Version 4.0)
-**Timeline:** October 8-9, 2026 | **Duration:** 8 days (4 phases)
+**Project Status:** ✅ **COMPLETE & PRODUCTION-READY** (Version 5.0)
+**Timeline:** October 8-9, 2026 | **Duration:** 8 days (5 phases)
+
+---
+
+## [5.0] - October 9, 2026 - Phase 5: Premium UI/UX Upgrade & Design-System Repair 🚀
+
+ ✦ # UI/UX Review & Upgrade — Complete ✅
+
+   ## 🔍 Critical finding (the site was actually rendering **unstyled**)
+
+   The project used Tailwind v4 with the old v3 directives and a JS config that was never loaded. The compiled CSS contained none of the brand tokens —
+   text-cyan-accent, bg-navy-950, shadow-glow-cyan, animate-fade-in, etc. all silently resolved to nothing. Build "passed," but every page rendered as raw HTML in the
+   browser.
+
+   Fix: Migrated app/globals.css to the native Tailwind v4 CSS-first @theme system — all 143+ semantic tokens, shadows, animations, and keyframes are now emitted as
+   real CSS variables, verified in the compiled bundle.
+
+   ## 🎨 What was upgraded
+
+   ┌───────────────────┬──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+   │ Area              │ Upgrade                                                                                                                                  │
+   ├───────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+   │ **Brand           │ New SVG shield-check logo mark (cyan→indigo gradient), crisp at any DPI; new favicon, logo, manifest, robots.txt, security.txt           │
+   │ identity**        │                                                                                                                                          │
+   ├───────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+   │ **Navigation**    │ Scroll-aware elevation, active route highlighting, animated external links, fully accessible mobile panel (Escape/focus-managed),        │
+   │                   │ corrected `/engines` link                                                                                                                │
+   ├───────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+   │ **Hero**          │ Layered grid + glow backdrop, gradient headline, animated stat counters (IntersectionObserver, reduced-motion aware), cloud-provider     │
+   │                   │ availability strip                                                                                                                       │
+   ├───────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+   │ **Homepage**      │ Added trust strip, 3-step "How it works," customer testimonials, shared `SectionHeading`; rebuilt all sections with consistent premium   │
+   │                   │ styling                                                                                                                                  │
+   ├───────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+   │ **Marketplaces**  │ Added `#deploy` anchor, replaced emoji logos with brand SVG marks (AWS/Azure/GCP), aligned card titles, provider-colored CTAs, FAQ       │
+   │                   │ accordion                                                                                                                                │
+   ├───────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+   │ **Enterprise**    │ Converted to server component with SEO metadata, added Navigation/Footer, hero CTAs, featured pricing card                               │
+   ├───────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+   │ **UI primitives** │ Fixed WCAG-failing white-on-cyan buttons (now dark text on cyan), fixed broken `shadow-glow`, Card hover glow, Badge contrast            │
+   ├───────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+   │ **AITriageConsole │ Fixed broken dynamic color classes, auto-scroll, `role="log"` live region, reduced-motion support                                        │
+   │ **                │                                                                                                                                          │
+   └───────────────────┴──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+   ## ✅ Verification results
+
+   - Build: PASSING — all 8 routes prerendered
+   - TypeScript: 0 errors
+   - ESLint: 0 errors, 0 warnings
+   - Accessibility: 0 axe WCAG 2 A/AA violations across all 6 pages (previously 1–10+ per page)
+   - E2E: 8/8 Playwright tests passing
+   - HTTP: all routes + brand assets return 200
+   - Changelog: updated to v5.0 — Phase 5: Premium UI/UX Upgrade & Design-System Repair
+
+   The site now presents the QA-PaaS brand as a modern, premium enterprise SaaS platform with consistent dark-navy/cyan identity, strong visual hierarchy, and
+   accessible, high-contrast CTAs throughout.
+
+### ✨ Phase 5 Complete - Modern SaaS Design Standard
+
+**Status:** ✅ COMPLETE | **Build:** PASSING | **TypeScript:** 0 errors | **ESLint:** 0 errors
+**Accessibility:** WCAG 2 A/AA — 0 axe violations across all 6 pages | **E2E:** 8/8 passing
+
+#### Critical Fixes
+
+- **Fixed the Tailwind CSS v4 pipeline** — the previous `@tailwind base/components/utilities` directives and unloaded `tailwind.config.ts` meant the production CSS contained **none** of the custom design tokens; the site was rendering unstyled in the browser. Migrated `app/globals.css` to the native CSS-first `@theme` system with all 143+ semantic tokens (colors, fonts, shadows, animations, keyframes) emitted as CSS variables.
+- **Fixed broken/undefined utility classes** (`text-accent-neural`, `from-primary-light`, `shadow-glow`, dynamic `text-${color}` interpolation) across all components.
+- **Created missing public brand assets** — `brand/logo.svg`, `brand/favicon.svg`, `manifest.json`, `robots.txt`, and `security.txt` (previously referenced but 404ing).
+- **Removed the Vercel debug script** from the root layout.
+
+#### UI/UX Upgrades
+
+- **Logo & brand mark** — new inline SVG shield-check mark with cyan→indigo gradient; crisp at any DPI with zero external requests.
+- **Navigation** — scroll-aware elevation, active route highlighting (`usePathname`), animated external-link arrows, accessible mobile panel (focus-managed, Escape support, route-close), correct `/engines` link target.
+- **Hero** — layered grid + glow background, gradient headline, animated stat counters (IntersectionObserver + reduced-motion aware), cloud-provider availability strip, accessible CTAs.
+- **Homepage** — added trust strip, 3-step "How it works", customer testimonials, and a shared `SectionHeading`; rebuilt features, use cases, benefits, integrations, compliance, and CTA sections with consistent premium styling.
+- **Marketplaces page** — added `#deploy` anchor target, replaced emoji cloud logos with brand SVG marks (`CloudProviderIcon`), rebuilt cards with aligned title zones and provider-colored CTAs, converted FAQ to an accessible animated accordion.
+- **Enterprise page** — converted to a server component with SEO metadata, added `Navigation`/`Footer`, hero CTAs, consistent stat cards, and a featured pricing card.
+- **UI primitives** — Button now uses dark text on bright cyan (WCAG AA contrast) with press feedback; Card hover glow fixed; Badge warning contrast fixed.
+- **AITriageConsole** — replaced broken dynamic color classes with a typed style map, added auto-scroll, `role="log"` live region, reduced-motion support, and a real "View Details" action.
+
+#### Accessibility Verification
+
+| Page | axe WCAG 2 A/AA Violations |
+|------|----------------------------|
+| `/` (Home) | 0 ✅ |
+| `/marketplaces` | 0 ✅ |
+| `/engines` | 0 ✅ |
+| `/enterprise` | 0 ✅ |
+| `/legal/privacy` | 0 ✅ |
+| `/legal/company-info` | 0 ✅ |
+
+#### Verification
+
+- ✅ `npm run build` — PASSING (all 8 routes prerendered)
+- ✅ `npx tsc --noEmit` — 0 errors
+- ✅ `npm run lint:check` — 0 errors, 0 warnings
+- ✅ `npx playwright test e2e/accessibility.spec.ts` — 8/8 passing
+- ✅ All routes + brand assets return HTTP 200
 
 ---
 

@@ -214,19 +214,19 @@ export const ComplianceGrid: React.FC = () => {
         <Card className="bg-navy-800/40 border-slate-700 p-6 text-center space-y-2">
           <div className="text-3xl font-bold text-emerald-400">8</div>
           <p className="text-sm text-slate-400">Major Certifications</p>
-          <p className="text-xs text-slate-500">ISO, SOC, GDPR, HIPAA, etc.</p>
+          <p className="text-xs text-slate-400">ISO, SOC, GDPR, HIPAA, etc.</p>
         </Card>
 
         <Card className="bg-navy-800/40 border-slate-700 p-6 text-center space-y-2">
           <div className="text-3xl font-bold text-cyan-accent">99.99%</div>
           <p className="text-sm text-slate-400">Uptime SLA</p>
-          <p className="text-xs text-slate-500">Enterprise-grade availability</p>
+          <p className="text-xs text-slate-400">Enterprise-grade availability</p>
         </Card>
 
         <Card className="bg-navy-800/40 border-slate-700 p-6 text-center space-y-2">
           <div className="text-3xl font-bold text-blue-400">365/24/7</div>
           <p className="text-sm text-slate-400">Support Available</p>
-          <p className="text-xs text-slate-500">Premium support included</p>
+          <p className="text-xs text-slate-400">Premium support included</p>
         </Card>
       </div>
 
@@ -236,9 +236,12 @@ export const ComplianceGrid: React.FC = () => {
         <p className="text-slate-400">
           Talk to our team about custom compliance configurations and dedicated support
         </p>
-        <button className="px-6 py-2 bg-cyan-accent hover:bg-cyan-500 text-white rounded-lg font-medium transition-colors">
+        <a
+          href="mailto:sales@qa-paas.com"
+          className="inline-flex items-center justify-center rounded-lg bg-cyan-accent px-6 py-2.5 text-sm font-bold text-navy-950 transition-colors hover:bg-cyan-400 focus-ring"
+        >
           Contact Sales
-        </button>
+        </a>
       </Card>
     </div>
   );

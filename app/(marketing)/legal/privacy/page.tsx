@@ -377,7 +377,7 @@ export default function PrivacyPage() {
                       <p className="font-mono text-sm text-accent-neural font-semibold">
                         privacy@qa-paas.com
                       </p>
-                      <p className="text-xs text-slate-500 mt-2">
+                      <p className="text-xs text-slate-400 mt-2">
                         Response time: Within 24 business hours
                       </p>
                     </div>

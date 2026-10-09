@@ -118,8 +118,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }):
         />
 
         {/* Favicon */}
-        <link rel="icon" href="/brand/favicon.ico" />
-        <link rel="apple-touch-icon" href="/brand/apple-touch-icon.png" />
+        <link rel="icon" type="image/svg+xml" href="/brand/favicon.svg" />
         <link rel="manifest" href="/manifest.json" />
 
         {/* Organization Schema */}
@@ -152,12 +151,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }):
         </div>
 
         <div id="root">{children}</div>
-
-        {/* Vercel Web Vitals (Optional) */}
-        <Script
-          src="https://va.vercel-scripts.com/v1/script.debug.js"
-          strategy="afterInteractive"
-        />
       </body>
     </html>
   );

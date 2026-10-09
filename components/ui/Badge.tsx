@@ -13,7 +13,7 @@ const variantStyles = {
   default: 'bg-neutral-700/40 border border-neutral-600 text-neutral-300',
   success: 'bg-success-500/15 border border-success-500/40 text-success-300',
   error: 'bg-error-500/15 border border-error-500/40 text-error-300',
-  warning: 'bg-warning-500/15 border border-warning-500/40 text-warning-600',
+  warning: 'bg-warning-500/15 border border-warning-500/40 text-warning-300',
   info: 'bg-info-500/15 border border-info-500/40 text-info-300',
   accent: 'bg-accent-500/15 border border-accent-500/40 text-accent-300',
   neutral: 'bg-neutral-700/30 border border-neutral-600/40 text-neutral-300',

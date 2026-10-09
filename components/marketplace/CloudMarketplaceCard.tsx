@@ -3,6 +3,7 @@
 import React from 'react';
 import { Card, Button, Badge } from '@/components/ui';
 import { CheckCircle2, ArrowRight, Zap, Shield } from 'lucide-react';
+import { CloudProviderIcon, type CloudProvider } from './CloudProviderLogo';
 
 export interface CloudMarketplaceOption {
   provider?: 'aws' | 'azure' | 'gcp';
@@ -34,7 +35,7 @@ export const CloudMarketplaceCard: React.FC<CloudMarketplaceCardProps> = ({
   const data = option || marketplace;
   if (!data) return null;
 
-  const provider = data.provider || data.id || 'cloud';
+  const provider = (data.provider || data.id || 'gcp') as CloudProvider;
   const name = data.name;
   const color =
     data.color || (provider === 'aws' ? '#FF9900' : provider === 'azure' ? '#0078D4' : '#4285F4');
@@ -107,12 +108,12 @@ export const CloudMarketplaceCard: React.FC<CloudMarketplaceCardProps> = ({
           <div className="flex items-start justify-between gap-4">
             <div className="space-y-2 flex-grow">
               <div
-                className="w-12 h-12 rounded-lg flex items-center justify-center text-sm font-bold text-white"
-                style={{ backgroundColor: `${color}20`, borderLeft: `3px solid ${color}` }}
+                className="flex h-12 w-12 items-center justify-center rounded-xl"
+                style={{ backgroundColor: `${color}1A`, boxShadow: `inset 0 0 0 1.5px ${color}66` }}
               >
-                <span className="text-xl">{getProviderLabel().charAt(0)}</span>
+                <CloudProviderIcon provider={provider} className="h-6 w-6" />
               </div>
-              <div>
+              <div className="min-h-[3.75rem]">
                 <h3 className="text-xl font-bold text-slate-100">{name}</h3>
                 <p className="text-xs text-slate-400 mt-1">
                   {data.deploymentMethod || data.badgeText}
@@ -151,14 +152,14 @@ export const CloudMarketplaceCard: React.FC<CloudMarketplaceCardProps> = ({
             <div className="space-y-1">
               <div className="flex items-center gap-1">
                 <Zap className="w-3 h-3 text-yellow-400" />
-                <p className="text-xs text-slate-500">Pricing</p>
+                <p className="text-xs text-slate-400">Pricing</p>
               </div>
               <p className="text-sm font-medium text-slate-100">{pricing}</p>
             </div>
             <div className="space-y-1">
               <div className="flex items-center gap-1">
                 <Shield className="w-3 h-3 text-emerald-400" />
-                <p className="text-xs text-slate-500">SLA</p>
+                <p className="text-xs text-slate-400">SLA</p>
               </div>
               <p className="text-sm font-medium text-slate-100">{sla}</p>
             </div>
@@ -169,11 +170,13 @@ export const CloudMarketplaceCard: React.FC<CloudMarketplaceCardProps> = ({
         <Button
           variant="solid"
           size="lg"
-          className="w-full mt-6 group/btn text-white font-semibold transition-all duration-300 hover:shadow-lg"
+          className={`w-full mt-6 group/btn font-bold transition-all duration-300 hover:shadow-lg ${
+            provider === 'azure' ? 'text-white' : 'text-navy-950'
+          }`}
           onClick={() => window.open(href, '_blank')}
           style={{
-            backgroundColor: color,
-            borderColor: color,
+            backgroundColor: provider === 'azure' ? '#005A9E' : color,
+            borderColor: provider === 'azure' ? '#005A9E' : color,
           }}
           onMouseEnter={(e) => {
             e.currentTarget.style.opacity = '0.9';
@@ -190,7 +193,7 @@ export const CloudMarketplaceCard: React.FC<CloudMarketplaceCardProps> = ({
 
         {/* Region Info */}
         {data.region && (
-          <p className="text-xs text-slate-500 text-center pt-2">Available in {data.region}</p>
+          <p className="text-xs text-slate-400 text-center pt-2">Available in {data.region}</p>
         )}
       </div>
     </Card>

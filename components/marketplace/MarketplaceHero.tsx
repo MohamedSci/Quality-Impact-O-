@@ -55,7 +55,7 @@ export const MarketplaceHero: React.FC = () => {
   };
 
   return (
-    <section className="relative w-full bg-slate-bg text-white pt-16 pb-24 px-6 md:px-12 overflow-hidden">
+    <section className="relative w-full overflow-hidden bg-slate-950 px-6 pt-20 pb-16 text-white md:px-12 md:pt-28 md:pb-24">
       {/* Dynamic SEO JSON-LD */}
       <Script
         id="qa-paas-schema"
@@ -63,22 +63,25 @@ export const MarketplaceHero: React.FC = () => {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdSchema) }}
       />
 
-      <div className="container-max space-y-12">
+      {/* Background accents */}
+      <div className="absolute inset-0 bg-grid [mask-image:radial-gradient(ellipse_65%_60%_at_50%_25%,black,transparent)] pointer-events-none" />
+      <div className="absolute -top-24 right-[-8%] h-[360px] w-[360px] rounded-full bg-cyan-accent/12 blur-[110px] pointer-events-none" />
+      <div className="absolute bottom-[-20%] left-[-6%] h-[320px] w-[320px] rounded-full bg-accent-500/10 blur-[100px] pointer-events-none" />
+
+      <div className="container-max relative z-10 space-y-14">
         {/* Corporate Header & Product Identifier */}
-        <div className="space-y-4 max-w-3xl">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-surface border border-slate-border text-xs font-mono text-accent-neural">
-            <Sparkles className="w-3.5 h-3.5 text-primary" />
+        <div className="max-w-3xl space-y-6">
+          <div className="inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-800/70 px-3.5 py-1.5 font-mono text-xs text-slate-300">
+            <Sparkles className="h-3.5 w-3.5 text-cyan-accent" aria-hidden="true" />
             <span>Quality Impact OÜ // Enterprise QA-PaaS Platform</span>
           </div>
 
-          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight font-sans text-slate-100 leading-tight">
-            AI-Orchestrated Software Testing. <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary-light to-accent-neural">
-              Available on All Cloud Marketplaces.
-            </span>
+          <h1 className="text-4xl md:text-6xl font-extrabold leading-tight tracking-tight text-slate-100 text-balance">
+            AI-Orchestrated Software Testing.{' '}
+            <span className="gradient-text">Available on All Cloud Marketplaces.</span>
           </h1>
 
-          <p className="text-lg text-slate-400 font-sans leading-relaxed">
+          <p className="max-w-2xl text-lg leading-relaxed text-slate-400">
             Provision QA-PaaS directly through your existing AWS, Azure, or Google Cloud enterprise
             agreement. Unified billing, high-compute test execution, and zero infrastructure
             friction.
@@ -86,23 +89,23 @@ export const MarketplaceHero: React.FC = () => {
         </div>
 
         {/* Cloud Marketplace Routing Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
           {MARKETPLACES.map((m) => (
             <CloudMarketplaceCard key={m.id} marketplace={m} />
           ))}
         </div>
 
         {/* Corporate Legal & Compliance Footer Ribbon */}
-        <div className="pt-8 border-t border-slate-border/60 flex flex-col md:flex-row items-center justify-between text-xs font-mono text-slate-500 gap-4">
-          <div className="flex items-center gap-4 flex-wrap">
+        <div className="flex flex-col items-center justify-between gap-4 border-t border-slate-700/70 pt-8 font-mono text-xs text-slate-400 md:flex-row">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
             <span>© {new Date().getFullYear()} Quality Impact OÜ</span>
             <span className="hidden md:inline">•</span>
             <span>Registry Code: 16842011</span>
             <span className="hidden md:inline">•</span>
             <span>Harju maakond, Tallinn, Estonia</span>
           </div>
-          <div className="flex items-center gap-2 text-status-pass">
-            <CheckCircle2 className="w-4 h-4" />
+          <div className="flex items-center gap-2 text-emerald-400">
+            <CheckCircle2 className="h-4 w-4" aria-hidden="true" />
             <span>ISO/IEC 27001 & SOC2 Compliant</span>
           </div>
         </div>

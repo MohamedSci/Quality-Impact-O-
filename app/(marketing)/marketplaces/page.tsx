@@ -1,8 +1,15 @@
 import type { Metadata } from 'next';
+import type * as React from 'react';
 import Script from 'next/script';
 import { Navigation, Footer } from '@/components/branding';
-import { MarketplaceHero, RunnerCalculator } from '@/components/marketplace';
-import { Card, Badge, Alert, InteractiveButton } from '@/components/ui';
+import {
+  MarketplaceHero,
+  RunnerCalculator,
+  FaqAccordion,
+  CloudProviderIcon,
+  type CloudProvider,
+} from '@/components/marketplace';
+import { Card, Badge, Alert } from '@/components/ui';
 import {
   CheckCircle2,
   Lock,
@@ -14,6 +21,7 @@ import {
   Shield,
   Gauge,
   ArrowRight,
+  ArrowUpRight,
   Code2,
   Users,
   Cpu,
@@ -55,25 +63,25 @@ export const metadata: Metadata = {
 const PROCUREMENT_STEPS = [
   {
     icon: CheckCircle2,
-    title: 'Step 1: Select Marketplace',
+    title: 'Select Marketplace',
     description: 'Choose AWS, Azure DevOps, or Google Cloud based on your enterprise agreement.',
     details: 'Review available offerings and pricing tiers for your organization.',
   },
   {
     icon: CreditCard,
-    title: 'Step 2: Authorize & Subscribe',
+    title: 'Authorize & Subscribe',
     description: 'Review billing terms and authorize the integration with your cloud account.',
     details: 'Automatic billing consolidation with your existing cloud invoice.',
   },
   {
     icon: Lock,
-    title: 'Step 3: Configure Access',
+    title: 'Configure Access',
     description: 'Set up IAM roles, service principals, or API keys for your cloud platform.',
     details: 'Security policies enforced; zero exposure to customer test data.',
   },
   {
     icon: Zap,
-    title: 'Step 4: Deploy & Execute',
+    title: 'Deploy & Execute',
     description:
       'Launch your first test job and monitor execution through live telemetry dashboards.',
     details: 'Support team available 24/7 for any integration issues.',
@@ -107,11 +115,19 @@ const COMPLIANCE_BADGES = [
   },
 ];
 
-const CLOUD_FEATURES = [
+const CLOUD_FEATURES: Array<{
+  provider: CloudProvider;
+  name: string;
+  href: string;
+  description: string;
+  features: Array<{ icon: React.ComponentType<{ className?: string }>; text: string }>;
+  pricing: string;
+  sla: string;
+}> = [
   {
+    provider: 'aws',
     name: 'AWS Marketplace',
-    logo: 'AWS',
-    accent: '#FF9900',
+    href: 'https://aws.amazon.com/marketplace/pp/prodview-qapaas',
     description: 'Deploy QA-PaaS via AWS Batch or Fargate compute engines.',
     features: [
       { icon: CloudOff, text: 'Auto-scaling VPC deployment' },
@@ -123,9 +139,9 @@ const CLOUD_FEATURES = [
     sla: '99.99% SLA',
   },
   {
+    provider: 'azure',
     name: 'Azure DevOps',
-    logo: 'AZURE',
-    accent: '#0078D4',
+    href: 'https://marketplace.visualstudio.com/items?itemName=qualityimpact.qa-paas',
     description: 'Native Azure Pipelines task with Service Connection support.',
     features: [
       { icon: Users, text: 'Multi-organization support' },
@@ -137,9 +153,9 @@ const CLOUD_FEATURES = [
     sla: '99.95% SLA',
   },
   {
+    provider: 'gcp',
     name: 'Google Cloud',
-    logo: 'GCP',
-    accent: '#4285F4',
+    href: 'https://console.cloud.google.com/marketplace/product/qualityimpact/qa-paas',
     description: 'Containerized execution via Google Cloud Run and GKE.',
     features: [
       { icon: Cpu, text: 'Cloud Run serverless' },
@@ -179,6 +195,33 @@ const VENDOR_BENEFITS = [
   },
 ];
 
+const FAQ_ITEMS = [
+  {
+    q: 'How long does deployment take?',
+    a: 'Most deployments are operational within 15-30 minutes from marketplace subscription. Our guided setup provisions runners, configures IAM, and runs a smoke test automatically.',
+  },
+  {
+    q: 'What if I use multiple cloud providers?',
+    a: 'QA-PaaS supports concurrent deployments across AWS, Azure, and GCP with unified monitoring and a single control plane, so you can route tests to the best region or provider per run.',
+  },
+  {
+    q: 'Is there a free trial?',
+    a: 'Yes, cloud marketplaces typically offer trial periods. Check your platform listing for current promotional terms and included usage credits.',
+  },
+  {
+    q: 'Can I upgrade or downgrade my plan?',
+    a: 'Plans are flexible and can be adjusted anytime through your marketplace console. Enterprise agreements support reserved capacity and volume discounts.',
+  },
+  {
+    q: 'What support is included?',
+    a: 'Enterprise support with 24/7 availability, SLA guarantees, and a dedicated support team. Premium plans add a named success manager and weekly strategy sessions.',
+  },
+  {
+    q: 'How is my test data protected?',
+    a: 'End-to-end encryption, ISO 27001 certification, and zero-knowledge architecture protect all data. You control data residency across AWS, Azure, and GCP regions.',
+  },
+];
+
 export default function MarketplacesPage() {
   const marketplaceSchema = {
     '@context': 'https://schema.org',
@@ -200,301 +243,286 @@ export default function MarketplacesPage() {
 
       <Navigation />
 
-      {/* Marketplace Hero */}
-      <MarketplaceHero />
+      <main id="main-content">
+        {/* Marketplace Hero */}
+        <MarketplaceHero />
 
-      {/* Quick Start Alert */}
-      <section className="section-padding bg-primary/5 border-y border-primary/20">
-        <div className="container-max">
-          <Alert variant="info" className="border-primary/30 bg-primary/10">
-            <Zap className="h-4 w-4 text-primary" />
-            <div className="ml-2 flex-1">
-              <p className="font-semibold text-primary mb-1">Ready to Get Started?</p>
-              <p className="text-sm text-slate-300">
-                Click on any marketplace below to view pricing, initiate your subscription, and
-                begin deploying QA-PaaS in minutes.
+        {/* Quick Start Alert */}
+        <section className="section-padding border-y border-cyan-accent/20 bg-cyan-accent/5">
+          <div className="container-max">
+            <Alert variant="info" className="border-cyan-accent/30 bg-cyan-accent/10">
+              <Zap className="h-4 w-4 text-cyan-accent" />
+              <div className="ml-2 flex-1">
+                <p className="mb-1 font-semibold text-cyan-accent">Ready to Get Started?</p>
+                <p className="text-sm text-slate-300">
+                  Click on any marketplace below to view pricing, initiate your subscription, and
+                  begin deploying QA-PaaS in minutes.
+                </p>
+              </div>
+            </Alert>
+          </div>
+        </section>
+
+        {/* Procurement Steps */}
+        <section className="section-padding-lg bg-slate-900">
+          <div className="container-max space-y-14">
+            <div className="mx-auto max-w-3xl space-y-5 text-center">
+              <div className="inline-flex items-center gap-2 rounded-full border border-cyan-accent/20 bg-cyan-accent/10 px-4 py-1.5">
+                <Play className="h-4 w-4 text-cyan-accent" />
+                <span className="text-sm font-semibold text-cyan-accent">4-Step Setup</span>
+              </div>
+              <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-slate-100 text-balance">
+                Simple 4-Step Procurement Journey
+              </h2>
+              <p className="text-lg text-slate-400">
+                Get QA-PaaS operational in minutes through your preferred cloud marketplace.
               </p>
             </div>
-          </Alert>
-        </div>
-      </section>
 
-      {/* Procurement Steps */}
-      <section className="section-padding bg-slate-surface">
-        <div className="container-max space-y-12">
-          <div className="max-w-3xl mx-auto text-center space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20">
-              <Play className="w-4 h-4 text-primary" />
-              <span className="text-sm font-semibold text-primary">4-Step Setup</span>
-            </div>
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-slate-100">
-              Simple 4-Step Procurement Journey
-            </h2>
-            <p className="text-lg text-slate-400">
-              Get QA-PaaS operational in minutes through your preferred cloud marketplace.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {PROCUREMENT_STEPS.map((step, idx) => {
-              const Icon = step.icon;
-              return (
-                <Card key={idx} className="space-y-4 relative">
-                  {idx < PROCUREMENT_STEPS.length - 1 && (
-                    <div className="absolute -right-3 top-1/2 hidden lg:block">
-                      <ArrowRight className="w-6 h-6 text-primary/30" />
-                    </div>
-                  )}
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center justify-center w-12 h-12 rounded-full bg-primary/20 border-2 border-primary">
-                      <Icon className="w-6 h-6 text-primary" />
-                    </div>
-                    <Badge variant="success">{String(idx + 1).padStart(2, '0')}</Badge>
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-slate-100">{step.title}</h3>
-                    <p className="text-sm text-slate-400 mt-2">{step.description}</p>
-                    <p className="text-xs text-slate-500 mt-3 italic">{step.details}</p>
-                  </div>
-                </Card>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Cloud Marketplace Cards */}
-      <section className="section-padding bg-slate-bg">
-        <div className="container-max space-y-12">
-          <div className="max-w-3xl mx-auto text-center space-y-4">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-100">
-              Available Cloud Platforms
-            </h2>
-            <p className="text-lg text-slate-400">
-              Choose your deployment platform and get access to enterprise-grade QA testing.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {CLOUD_FEATURES.map((cloud, idx) => (
-              <Card key={idx} hover className="space-y-6 flex flex-col">
-                <div className="space-y-2 border-b border-slate-700 pb-4">
-                  <div className="text-sm font-mono font-semibold text-slate-400">{cloud.logo}</div>
-                  <h3 className="text-2xl font-bold text-slate-100">{cloud.name}</h3>
-                  <p className="text-sm text-slate-400">{cloud.description}</p>
-                </div>
-
-                <div className="space-y-2 flex-grow">
-                  <p className="text-xs font-semibold text-slate-400 uppercase">Features</p>
-                  <ul className="space-y-2">
-                    {cloud.features.map((feature, fIdx) => {
-                      const FeatureIcon = feature.icon;
-                      return (
-                        <li key={fIdx} className="flex items-center gap-2 text-sm text-slate-300">
-                          <FeatureIcon className="w-4 h-4 text-primary flex-shrink-0" />
-                          {feature.text}
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </div>
-
-                <div className="space-y-3 border-t border-slate-700 pt-4">
-                  <div className="text-center">
-                    <p className="text-xs text-slate-500">Pricing Model</p>
-                    <p className="text-sm font-semibold text-slate-100">{cloud.pricing}</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-xs text-slate-500">Service Level Agreement</p>
-                    <p className="text-sm font-semibold text-status-pass">{cloud.sla}</p>
-                  </div>
-                </div>
-
-                <InteractiveButton
-                  variant="primary"
-                  size="lg"
-                  className="w-full mt-4"
-                  href={
-                    idx === 0
-                      ? 'https://aws.amazon.com/marketplace/pp/prodview-qapaas'
-                      : idx === 1
-                        ? 'https://marketplace.visualstudio.com/items?itemName=qualityimpact.qa-paas'
-                        : 'https://console.cloud.google.com/marketplace/product/qualityimpact/qa-paas'
-                  }
-                >
-                  Access Marketplace
-                </InteractiveButton>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Enterprise Benefits */}
-      <section className="section-padding bg-slate-surface">
-        <div className="container-max space-y-12">
-          <div className="max-w-3xl mx-auto text-center space-y-4">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-100">
-              Enterprise Vendor Benefits
-            </h2>
-            <p className="text-lg text-slate-400">
-              Procurement teams gain immediate value from cloud marketplace deployment.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {VENDOR_BENEFITS.map((item, idx) => (
-              <Card key={idx} className="space-y-3">
-                <CheckCircle2 className="w-6 h-6 text-status-pass" />
-                <h3 className="text-lg font-semibold text-slate-100">{item.benefit}</h3>
-                <p className="text-sm text-slate-400">{item.description}</p>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Compliance Section */}
-      <section className="section-padding bg-slate-bg">
-        <div className="container-max space-y-12">
-          <div className="max-w-3xl mx-auto text-center space-y-4">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-100">
-              Enterprise-Grade Compliance
-            </h2>
-            <p className="text-lg text-slate-400">
-              Certified compliance and security standards across all cloud platforms.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {COMPLIANCE_BADGES.map((badge, idx) => {
-              const BadgeIcon = badge.icon;
-              return (
-                <Card
-                  key={idx}
-                  className="space-y-4 border-primary/20 hover:border-primary/40 transition-colors"
-                >
-                  <div className="flex items-start gap-4">
-                    <BadgeIcon className="w-8 h-8 text-primary flex-shrink-0 mt-1" />
-                    <div className="flex-grow">
-                      <div className="flex items-center justify-between mb-2">
-                        <h3 className="font-semibold text-slate-100">{badge.label}</h3>
-                        <Badge variant="info" className="text-xs">
-                          {badge.badge}
-                        </Badge>
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+              {PROCUREMENT_STEPS.map((step, idx) => {
+                const Icon = step.icon;
+                return (
+                  <Card key={step.title} className="relative space-y-5 p-6">
+                    {idx < PROCUREMENT_STEPS.length - 1 && (
+                      <div
+                        className="absolute -right-3.5 top-1/2 hidden -translate-y-1/2 lg:block"
+                        aria-hidden="true"
+                      >
+                        <ArrowRight className="h-6 w-6 text-cyan-accent/40" />
                       </div>
-                      <p className="text-sm text-slate-400">{badge.description}</p>
+                    )}
+                    <div className="flex items-center justify-between">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-cyan-accent/15 ring-2 ring-cyan-accent">
+                        <Icon className="h-6 w-6 text-cyan-accent" aria-hidden="true" />
+                      </div>
+                      <Badge variant="success" className="font-mono">
+                        {String(idx + 1).padStart(2, '0')}
+                      </Badge>
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold text-slate-100">{step.title}</h3>
+                      <p className="mt-2 text-sm leading-relaxed text-slate-400">
+                        {step.description}
+                      </p>
+                      <p className="mt-3 text-xs italic text-slate-400">{step.details}</p>
+                    </div>
+                  </Card>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* Cloud Marketplace Cards (deploy anchor) */}
+        <section id="deploy" className="section-padding-lg scroll-mt-24 bg-slate-950">
+          <div className="container-max space-y-14">
+            <div className="mx-auto max-w-3xl space-y-5 text-center">
+              <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-slate-100 text-balance">
+                Available Cloud Platforms
+              </h2>
+              <p className="text-lg text-slate-400">
+                Choose your deployment platform and get access to enterprise-grade QA testing.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+              {CLOUD_FEATURES.map((cloud) => (
+                <Card key={cloud.provider} hover className="flex flex-col space-y-6 p-7">
+                  <div className="space-y-3 border-b border-slate-700 pb-5">
+                    <div className="flex items-center gap-3">
+                      <CloudProviderIcon provider={cloud.provider} className="h-8 w-8" />
+                      <h3 className="text-2xl font-bold text-slate-100">{cloud.name}</h3>
+                    </div>
+                    <p className="text-sm leading-relaxed text-slate-400">{cloud.description}</p>
+                  </div>
+
+                  <div className="flex-1 space-y-2.5">
+                    <p className="text-xs font-semibold uppercase tracking-wide text-slate-400">
+                      Features
+                    </p>
+                    <ul className="space-y-2.5">
+                      {cloud.features.map((feature) => {
+                        const FeatureIcon = feature.icon;
+                        return (
+                          <li
+                            key={feature.text}
+                            className="flex items-center gap-2.5 text-sm text-slate-300"
+                          >
+                            <FeatureIcon
+                              className="h-4 w-4 flex-shrink-0 text-cyan-accent"
+                              aria-hidden="true"
+                            />
+                            {feature.text}
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+
+                  <div className="space-y-3 border-t border-slate-700 pt-5">
+                    <div className="text-center">
+                      <p className="text-xs text-slate-400">Pricing Model</p>
+                      <p className="text-sm font-semibold text-slate-100">{cloud.pricing}</p>
+                    </div>
+                    <div className="text-center">
+                      <p className="text-xs text-slate-400">Service Level Agreement</p>
+                      <p className="text-sm font-semibold text-emerald-400">{cloud.sla}</p>
                     </div>
                   </div>
+
+                  <a
+                    href={cloud.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group inline-flex w-full items-center justify-center gap-2 rounded-xl border-2 border-slate-700 bg-slate-800/60 px-5 py-3 text-sm font-bold text-slate-100 transition-all duration-200 hover:border-cyan-accent/60 hover:shadow-glow-cyan focus-ring active:scale-[0.98]"
+                  >
+                    Access Marketplace
+                    <ArrowUpRight className="h-4 w-4 opacity-60 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </a>
                 </Card>
-              );
-            })}
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* FAQ Section */}
-      <section className="section-padding bg-slate-surface">
-        <div className="container-max space-y-12">
-          <div className="max-w-3xl mx-auto text-center space-y-4">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-100">
-              Frequently Asked Questions
-            </h2>
-            <p className="text-lg text-slate-400">
-              Common questions about QA-PaaS cloud marketplace deployment.
-            </p>
+        {/* Enterprise Benefits */}
+        <section className="section-padding-lg bg-slate-900">
+          <div className="container-max space-y-14">
+            <div className="mx-auto max-w-3xl space-y-5 text-center">
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-100 text-balance">
+                Enterprise Vendor Benefits
+              </h2>
+              <p className="text-lg text-slate-400">
+                Procurement teams gain immediate value from cloud marketplace deployment.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {VENDOR_BENEFITS.map((item) => (
+                <Card key={item.benefit} hover className="space-y-3 p-6">
+                  <CheckCircle2 className="h-6 w-6 text-emerald-400" aria-hidden="true" />
+                  <h3 className="text-lg font-semibold text-slate-100">{item.benefit}</h3>
+                  <p className="text-sm leading-relaxed text-slate-400">{item.description}</p>
+                </Card>
+              ))}
+            </div>
           </div>
+        </section>
 
-          <div className="max-w-3xl mx-auto space-y-4">
-            {[
-              {
-                q: 'How long does deployment take?',
-                a: 'Most deployments are operational within 15-30 minutes from marketplace subscription.',
-              },
-              {
-                q: 'What if I use multiple cloud providers?',
-                a: 'QA-PaaS supports concurrent deployments across AWS, Azure, and GCP with unified monitoring.',
-              },
-              {
-                q: 'Is there a free trial?',
-                a: 'Yes, cloud marketplaces typically offer trial periods. Check your platform for details.',
-              },
-              {
-                q: 'Can I upgrade or downgrade my plan?',
-                a: 'Plans are flexible and can be adjusted anytime through your marketplace console.',
-              },
-              {
-                q: 'What support is included?',
-                a: 'Enterprise support with 24/7 availability, SLA guarantees, and dedicated support team.',
-              },
-              {
-                q: 'How is my test data protected?',
-                a: 'End-to-end encryption, ISO 27001 certification, and zero-knowledge architecture protect all data.',
-              },
-            ].map((item, idx) => (
-              <Card key={idx} className="space-y-2 p-4">
-                <h4 className="font-semibold text-slate-100">{item.q}</h4>
-                <p className="text-sm text-slate-400">{item.a}</p>
-              </Card>
-            ))}
+        {/* Compliance Section */}
+        <section className="section-padding-lg bg-slate-950">
+          <div className="container-max space-y-14">
+            <div className="mx-auto max-w-3xl space-y-5 text-center">
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-100 text-balance">
+                Enterprise-Grade Compliance
+              </h2>
+              <p className="text-lg text-slate-400">
+                Certified compliance and security standards across all cloud platforms.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+              {COMPLIANCE_BADGES.map((badge) => {
+                const BadgeIcon = badge.icon;
+                return (
+                  <Card key={badge.label} hover className="space-y-4 border-cyan-accent/20 p-6">
+                    <div className="flex items-start gap-4">
+                      <BadgeIcon
+                        className="mt-1 h-8 w-8 flex-shrink-0 text-cyan-accent"
+                        aria-hidden="true"
+                      />
+                      <div className="flex-1">
+                        <div className="mb-2 flex items-center justify-between gap-3">
+                          <h3 className="font-semibold text-slate-100">{badge.label}</h3>
+                          <Badge variant="info" className="text-xs">
+                            {badge.badge}
+                          </Badge>
+                        </div>
+                        <p className="text-sm leading-relaxed text-slate-400">
+                          {badge.description}
+                        </p>
+                      </div>
+                    </div>
+                  </Card>
+                );
+              })}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Final CTA */}
-      <section className="section-padding bg-slate-bg">
-        <div className="container-max max-w-3xl mx-auto space-y-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-100">
-            Ready to Deploy QA-PaaS?
-          </h2>
-          <p className="text-lg text-slate-400">
-            Choose your cloud platform and start testing at enterprise scale in minutes.
-          </p>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <InteractiveButton
-              variant="primary"
-              size="lg"
-              href="https://aws.amazon.com/marketplace/pp/prodview-qapaas"
-            >
-              AWS Marketplace
-            </InteractiveButton>
-            <InteractiveButton
-              variant="primary"
-              size="lg"
-              href="https://marketplace.visualstudio.com/items?itemName=qualityimpact.qa-paas"
-            >
-              Azure DevOps
-            </InteractiveButton>
-            <InteractiveButton
-              variant="primary"
-              size="lg"
-              href="https://console.cloud.google.com/marketplace/product/qualityimpact/qa-paas"
-            >
-              Google Cloud
-            </InteractiveButton>
-          </div>
-
-          <div className="border-t border-slate-600 pt-8 text-sm text-slate-400">
-            <p>
-              Need help deciding? Contact our sales team:{' '}
-              <a
-                href="mailto:sales@qa-paas.com"
-                className="text-primary hover:underline font-semibold"
+        {/* FAQ Section */}
+        <section className="section-padding-lg bg-slate-900" aria-labelledby="faq-heading">
+          <div className="container-max space-y-14">
+            <div className="mx-auto max-w-3xl space-y-5 text-center">
+              <h2
+                id="faq-heading"
+                className="text-3xl md:text-4xl font-bold tracking-tight text-slate-100 text-balance"
               >
-                sales@qa-paas.com
-              </a>
-            </p>
-          </div>
-        </div>
-      </section>
+                Frequently Asked Questions
+              </h2>
+              <p className="text-lg text-slate-400">
+                Common questions about QA-PaaS cloud marketplace deployment.
+              </p>
+            </div>
 
-      {/* Runner Cost Calculator */}
-      <section className="section-padding bg-slate-bg">
-        <div className="container-max">
-          <RunnerCalculator />
-        </div>
-      </section>
+            <div className="mx-auto max-w-3xl">
+              <FaqAccordion items={FAQ_ITEMS} />
+            </div>
+          </div>
+        </section>
+
+        {/* Final CTA */}
+        <section className="section-padding-lg bg-slate-950">
+          <div className="container-max">
+            <div className="mx-auto max-w-3xl space-y-10 text-center">
+              <div className="space-y-4">
+                <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-100 text-balance">
+                  Ready to Deploy QA-PaaS?
+                </h2>
+                <p className="text-lg text-slate-400">
+                  Choose your cloud platform and start testing at enterprise scale in minutes.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+                {CLOUD_FEATURES.map((cloud) => (
+                  <a
+                    key={cloud.provider}
+                    href={cloud.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group inline-flex items-center justify-center gap-2 rounded-xl bg-slate-800/80 px-6 py-4 text-base font-bold text-slate-100 ring-1 ring-slate-700 transition-all duration-200 hover:ring-cyan-accent/60 hover:shadow-glow-cyan focus-ring active:scale-[0.98]"
+                  >
+                    <CloudProviderIcon provider={cloud.provider} className="h-5 w-5" />
+                    {cloud.name}
+                    <ArrowUpRight className="h-4 w-4 opacity-50 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </a>
+                ))}
+              </div>
+
+              <div className="border-t border-slate-700/70 pt-8 text-sm text-slate-400">
+                <p>
+                  Need help deciding? Contact our sales team:{' '}
+                  <a
+                    href="mailto:sales@qa-paas.com"
+                    className="font-semibold text-cyan-accent hover:underline"
+                  >
+                    sales@qa-paas.com
+                  </a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Runner Cost Calculator */}
+        <section className="section-padding-lg border-t border-slate-700/60 bg-slate-900">
+          <div className="container-max">
+            <RunnerCalculator />
+          </div>
+        </section>
+      </main>
 
       <Footer />
     </>

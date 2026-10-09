@@ -135,7 +135,7 @@ export default function CompanyInfoPage() {
                     </div>
                     <div>
                       <p className="text-sm text-slate-400">VAT Identification Number</p>
-                      <p className="text-lg font-mono font-semibold text-slate-100">EE102155066</p>
+                      <p className="text-lg font-mono font-semibold text-slate-100">EE102684201</p>
                     </div>
                   </div>
                 </div>
