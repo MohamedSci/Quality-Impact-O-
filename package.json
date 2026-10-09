@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Quality Impact OÜ - QA-PaaS SaaS Platform Website (www.qa-paas.com)",
   "private": true,
+    "license": "PROPRIETARY SOFTWARE LICENSE & EULA",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
