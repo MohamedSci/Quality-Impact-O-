@@ -3,9 +3,8 @@ import clsx from 'clsx';
 import type { InputSize, InputState, ComponentBaseProps } from './types';
 
 interface InputProps
-  extends React.InputHTMLAttributes<HTMLInputElement>,
-    ComponentBaseProps {
-  size?: InputSize;
+  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'>, ComponentBaseProps {
+  inputSize?: InputSize;
   state?: InputState;
   label?: string;
   error?: string;
@@ -30,7 +29,7 @@ const stateStyles = {
 };
 
 export const Input: React.FC<InputProps> = ({
-  size = 'md',
+  inputSize = 'md',
   state = 'default',
   label,
   error,
@@ -66,7 +65,7 @@ export const Input: React.FC<InputProps> = ({
           className={clsx(
             'w-full rounded-lg border bg-neutral-900/50 text-neutral-100 placeholder-neutral-500 transition-all duration-150',
             'focus-ring',
-            sizeStyles[size],
+            sizeStyles[inputSize],
             stateStyles[currentState],
             icon && iconPosition === 'left' && 'pl-10',
             icon && iconPosition === 'right' && 'pr-10',

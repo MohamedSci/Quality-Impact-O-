@@ -70,18 +70,12 @@ export const Alert: React.FC<AlertProps> = ({
 
   return (
     <div
-      className={clsx(
-        'rounded-lg p-4 flex gap-3 items-start',
-        styles.container,
-        className
-      )}
+      className={clsx('rounded-lg p-4 flex gap-3 items-start', styles.container, className)}
       data-testid={testId}
       aria-label={ariaLabel}
       role="alert"
     >
-      <div className={clsx('flex-shrink-0 mt-0.5', styles.icon)}>
-        {icon || iconMap[variant]}
-      </div>
+      <div className={clsx('flex-shrink-0 mt-0.5', styles.icon)}>{icon || iconMap[variant]}</div>
 
       <div className="flex-1 min-w-0">
         {title && <h3 className={styles.title}>{title}</h3>}

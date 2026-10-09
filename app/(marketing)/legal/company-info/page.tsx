@@ -1,10 +1,17 @@
 import type { Metadata } from 'next';
 import Script from 'next/script';
 import { Navigation, Footer } from '@/components/branding';
-import { Card, Badge, Button } from '@/components/ui';
+import { Card, Badge, InteractiveButton } from '@/components/ui';
 import {
-  Building2, Globe2, Award, Users, Shield, Lock,
-  CheckCircle2, ExternalLink, Mail, MapPin, Code2
+  Building2,
+  Globe2,
+  Users,
+  Shield,
+  Lock,
+  CheckCircle2,
+  Mail,
+  MapPin,
+  Code2,
 } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -82,7 +89,8 @@ export default function CompanyInfoPage() {
               Quality Impact OÜ
             </h1>
             <p className="text-xl text-slate-400 max-w-2xl mx-auto">
-              EU-registered enterprise software vendor powering the QA-PaaS platform for global enterprises.
+              EU-registered enterprise software vendor powering the QA-PaaS platform for global
+              enterprises.
             </p>
           </div>
         </div>
@@ -97,10 +105,15 @@ export default function CompanyInfoPage() {
               <div className="space-y-3">
                 <h2 className="text-2xl font-bold text-slate-100">About Us</h2>
                 <p className="text-slate-400 leading-relaxed">
-                  Quality Impact OÜ is a European technology company focused on delivering enterprise-grade software quality assurance solutions. We provide the QA-PaaS platform, a cloud-native test orchestration engine available across all major cloud marketplaces (AWS, Azure, Google Cloud).
+                  Quality Impact OÜ is a European technology company focused on delivering
+                  enterprise-grade software quality assurance solutions. We provide the QA-PaaS
+                  platform, a cloud-native test orchestration engine available across all major
+                  cloud marketplaces (AWS, Azure, Google Cloud).
                 </p>
                 <p className="text-slate-400 leading-relaxed">
-                  Founded on principles of transparency, security, and innovation, we're committed to helping enterprises accelerate software delivery without compromising quality or compliance.
+                  Founded on principles of transparency, security, and innovation, we&apos;re
+                  committed to helping enterprises accelerate software delivery without compromising
+                  quality or compliance.
                 </p>
               </div>
 
@@ -112,7 +125,9 @@ export default function CompanyInfoPage() {
                   <div className="space-y-3">
                     <div>
                       <p className="text-sm text-slate-400">Legal Entity Name</p>
-                      <p className="text-lg font-semibold text-slate-100">Quality Impact Osakuyhtiö</p>
+                      <p className="text-lg font-semibold text-slate-100">
+                        Quality Impact Osakuyhtiö
+                      </p>
                     </div>
                     <div>
                       <p className="text-sm text-slate-400">Registry Code (KMKR)</p>
@@ -194,15 +209,24 @@ export default function CompanyInfoPage() {
                 <h2 className="text-2xl font-bold text-slate-100">Mission & Vision</h2>
                 <Card className="space-y-4 bg-slate-surface/50 border-primary/20">
                   <div>
-                    <h3 className="text-sm font-semibold text-primary uppercase mb-2">Our Mission</h3>
+                    <h3 className="text-sm font-semibold text-primary uppercase mb-2">
+                      Our Mission
+                    </h3>
                     <p className="text-slate-400 leading-relaxed">
-                      Democratize access to AI-powered, cloud-native test orchestration through transparent, vendor-agnostic marketplace procurement. We believe enterprise software quality shouldn't require complex infrastructure or vendor lock-in.
+                      Democratize access to AI-powered, cloud-native test orchestration through
+                      transparent, vendor-agnostic marketplace procurement. We believe enterprise
+                      software quality shouldn&apos;t require complex infrastructure or vendor
+                      lock-in.
                     </p>
                   </div>
                   <div className="border-t border-slate-700 pt-4">
-                    <h3 className="text-sm font-semibold text-accent-neural uppercase mb-2">Our Vision</h3>
+                    <h3 className="text-sm font-semibold text-accent-neural uppercase mb-2">
+                      Our Vision
+                    </h3>
                     <p className="text-slate-400 leading-relaxed">
-                      Empower every organization to deploy enterprise-grade QA infrastructure in minutes, not months. To become the trusted QA platform for enterprises across all cloud ecosystems.
+                      Empower every organization to deploy enterprise-grade QA infrastructure in
+                      minutes, not months. To become the trusted QA platform for enterprises across
+                      all cloud ecosystems.
                     </p>
                   </div>
                 </Card>
@@ -213,7 +237,11 @@ export default function CompanyInfoPage() {
                 <h2 className="text-2xl font-bold text-slate-100">Core Values</h2>
                 <div className="grid grid-cols-2 gap-3">
                   {[
-                    { icon: CheckCircle2, label: 'Transparency', desc: 'Open pricing & operations' },
+                    {
+                      icon: CheckCircle2,
+                      label: 'Transparency',
+                      desc: 'Open pricing & operations',
+                    },
                     { icon: Shield, label: 'Security', desc: 'Enterprise compliance' },
                     { icon: Code2, label: 'Innovation', desc: 'AI-driven testing' },
                     { icon: Globe2, label: 'Global', desc: 'Multi-cloud support' },
@@ -240,7 +268,10 @@ export default function CompanyInfoPage() {
                     { metric: '99.99%', label: 'Platform Uptime' },
                     { metric: '24/7', label: 'Global Support' },
                   ].map((item, idx) => (
-                    <div key={idx} className="flex items-center justify-between p-3 bg-slate-surface/50 rounded-lg border border-slate-700">
+                    <div
+                      key={idx}
+                      className="flex items-center justify-between p-3 bg-slate-surface/50 rounded-lg border border-slate-700"
+                    >
                       <p className="text-sm text-slate-400">{item.label}</p>
                       <p className="text-lg font-bold text-primary">{item.metric}</p>
                     </div>
@@ -250,11 +281,16 @@ export default function CompanyInfoPage() {
 
               {/* Compliance Certifications */}
               <Card className="space-y-4 bg-slate-surface/50 border-status-pass/20">
-                <h3 className="text-lg font-semibold text-slate-100">Compliance & Certifications</h3>
+                <h3 className="text-lg font-semibold text-slate-100">
+                  Compliance & Certifications
+                </h3>
                 <div className="space-y-3">
                   {[
                     { badge: 'ISO/IEC 27001:2022', desc: 'Information Security Management System' },
-                    { badge: 'SOC2 Type II', desc: 'Security, Availability, Confidentiality & Privacy' },
+                    {
+                      badge: 'SOC2 Type II',
+                      desc: 'Security, Availability, Confidentiality & Privacy',
+                    },
                     { badge: 'GDPR Certified', desc: 'Full Data Protection Regulation Compliance' },
                     { badge: 'OWASP Top 10', desc: 'Web Application Security Standards' },
                     { badge: 'CNCF Aligned', desc: 'Cloud Native Computing Foundation Standards' },
@@ -282,7 +318,8 @@ export default function CompanyInfoPage() {
               Leadership & Governance
             </h2>
             <p className="text-lg text-slate-400">
-              Experienced enterprise software executives driving QA-PaaS innovation and market leadership.
+              Experienced enterprise software executives driving QA-PaaS innovation and market
+              leadership.
             </p>
           </div>
 
@@ -291,7 +328,8 @@ export default function CompanyInfoPage() {
               {
                 role: 'Chief Product Officer',
                 expertise: 'SaaS Product Strategy',
-                background: 'Former VP Engineering at Fortune 500 SaaS vendor, 20+ years in software',
+                background:
+                  'Former VP Engineering at Fortune 500 SaaS vendor, 20+ years in software',
               },
               {
                 role: 'VP of Platform Engineering',
@@ -309,7 +347,9 @@ export default function CompanyInfoPage() {
                 <h3 className="text-lg font-semibold text-slate-100">{member.role}</h3>
                 <div className="space-y-3 border-t border-slate-700 pt-4">
                   <div>
-                    <Badge variant="info" className="text-xs mb-2">{member.expertise}</Badge>
+                    <Badge variant="info" className="text-xs mb-2">
+                      {member.expertise}
+                    </Badge>
                     <p className="text-sm text-slate-400">{member.background}</p>
                   </div>
                 </div>
@@ -327,7 +367,8 @@ export default function CompanyInfoPage() {
               Trusted by Enterprise Teams
             </h2>
             <p className="text-lg text-slate-400">
-              Serving leading organizations across financial services, SaaS, cloud infrastructure, and more.
+              Serving leading organizations across financial services, SaaS, cloud infrastructure,
+              and more.
             </p>
           </div>
 
@@ -361,20 +402,12 @@ export default function CompanyInfoPage() {
           </p>
 
           <div className="flex flex-col md:flex-row gap-4 justify-center">
-            <Button
-              variant="primary"
-              size="lg"
-              onClick={() => (window.location.href = 'mailto:sales@qa-paas.com')}
-            >
+            <InteractiveButton variant="primary" size="lg" href="mailto:sales@qa-paas.com">
               Contact Sales
-            </Button>
-            <Button
-              variant="secondary"
-              size="lg"
-              onClick={() => (window.location.href = '/marketplaces')}
-            >
+            </InteractiveButton>
+            <InteractiveButton variant="secondary" size="lg" href="/marketplaces">
               View Marketplace Offerings
-            </Button>
+            </InteractiveButton>
           </div>
         </div>
       </section>

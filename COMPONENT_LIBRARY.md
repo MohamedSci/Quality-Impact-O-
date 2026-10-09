@@ -4,42 +4,44 @@ Complete reference guide for all reusable UI components in the QA-PaaS design sy
 
 ## Components Overview
 
-| Component | Status | Variants | Use Case |
-|-----------|--------|----------|----------|
-| **Button** | ✅ | 5 | Primary interactions, actions |
-| **Badge** | ✅ | 7 | Status indicators, labels |
-| **Card** | ✅ | 3 | Content containers |
-| **Input** | ✅ | 5 | Form fields |
-| **Alert** | ✅ | 5 | Notifications, messages |
-| **Divider** | ✅ | 3 | Content separation |
-| **Skeleton** | ✅ | 3 | Loading states |
+| Component    | Status | Variants | Use Case                      |
+| ------------ | ------ | -------- | ----------------------------- |
+| **Button**   | ✅     | 5        | Primary interactions, actions |
+| **Badge**    | ✅     | 7        | Status indicators, labels     |
+| **Card**     | ✅     | 3        | Content containers            |
+| **Input**    | ✅     | 5        | Form fields                   |
+| **Alert**    | ✅     | 5        | Notifications, messages       |
+| **Divider**  | ✅     | 3        | Content separation            |
+| **Skeleton** | ✅     | 3        | Loading states                |
 
 ---
 
 ## Button Component
 
 ### Import
+
 ```typescript
 import { Button } from '@/components/ui';
 ```
 
 ### Props
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `variant` | `ButtonVariant` | `'solid'` | Button style variant |
-| `size` | `SizeVariant` | `'md'` | Button size |
-| `color` | `ColorVariant` | `'primary'` | Button color |
-| `icon` | `ReactNode` | - | Icon element |
-| `iconPosition` | `'left' \| 'right'` | `'left'` | Icon position |
-| `fullWidth` | `boolean` | `false` | Fill container width |
-| `isLoading` | `boolean` | `false` | Show loading spinner |
-| `isDisabled` | `boolean` | `false` | Disable button |
-| `children` | `ReactNode` | - | Button label (required) |
+| Prop           | Type                | Default     | Description             |
+| -------------- | ------------------- | ----------- | ----------------------- |
+| `variant`      | `ButtonVariant`     | `'solid'`   | Button style variant    |
+| `size`         | `SizeVariant`       | `'md'`      | Button size             |
+| `color`        | `ColorVariant`      | `'primary'` | Button color            |
+| `icon`         | `ReactNode`         | -           | Icon element            |
+| `iconPosition` | `'left' \| 'right'` | `'left'`    | Icon position           |
+| `fullWidth`    | `boolean`           | `false`     | Fill container width    |
+| `isLoading`    | `boolean`           | `false`     | Show loading spinner    |
+| `isDisabled`   | `boolean`           | `false`     | Disable button          |
+| `children`     | `ReactNode`         | -           | Button label (required) |
 
 ### Variants
 
 #### Solid Button
+
 ```typescript
 <Button variant="solid">Solid Button</Button>
 <Button variant="solid" color="success">Success</Button>
@@ -47,24 +49,28 @@ import { Button } from '@/components/ui';
 ```
 
 #### Outline Button
+
 ```typescript
 <Button variant="outline">Outline Button</Button>
 <Button variant="outline" color="accent">Accent Outline</Button>
 ```
 
 #### Soft Button
+
 ```typescript
 <Button variant="soft">Soft Button</Button>
 <Button variant="soft" color="warning">Warning Soft</Button>
 ```
 
 #### Ghost Button
+
 ```typescript
 <Button variant="ghost">Ghost Button</Button>
 <Button variant="ghost" color="info">Info Ghost</Button>
 ```
 
 #### Link Button
+
 ```typescript
 <Button variant="link">Link Button</Button>
 <Button variant="link" color="error">Error Link</Button>
@@ -154,18 +160,19 @@ import { ArrowRight, Plus, Trash2 } from 'lucide-react';
 ## Badge Component
 
 ### Import
+
 ```typescript
 import { Badge } from '@/components/ui';
 ```
 
 ### Props
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `variant` | `BadgeVariant` | `'default'` | Badge style |
-| `size` | `SizeVariant` | `'md'` | Badge size |
-| `icon` | `ReactNode` | - | Badge icon |
-| `children` | `ReactNode` | - | Badge label (required) |
+| Prop       | Type           | Default     | Description            |
+| ---------- | -------------- | ----------- | ---------------------- |
+| `variant`  | `BadgeVariant` | `'default'` | Badge style            |
+| `size`     | `SizeVariant`  | `'md'`      | Badge size             |
+| `icon`     | `ReactNode`    | -           | Badge icon             |
+| `children` | `ReactNode`    | -           | Badge label (required) |
 
 ### Variants
 
@@ -243,20 +250,21 @@ import { CheckCircle2, AlertCircle, AlertTriangle } from 'lucide-react';
 ## Card Component
 
 ### Import
+
 ```typescript
 import { Card } from '@/components/ui';
 ```
 
 ### Props
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `variant` | `'default' \| 'elevated' \| 'flat'` | `'default'` | Card style |
-| `padding` | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| 'none'` | `'md'` | Internal padding |
-| `hover` | `boolean` | `false` | Enable hover effect |
-| `interactive` | `boolean` | `false` | Cursor pointer |
-| `borderColor` | `'default' \| 'accent' \| 'success' \| 'error' \| 'warning' \| 'info'` | `'default'` | Border color |
-| `children` | `ReactNode` | - | Card content (required) |
+| Prop          | Type                                                                   | Default     | Description             |
+| ------------- | ---------------------------------------------------------------------- | ----------- | ----------------------- |
+| `variant`     | `'default' \| 'elevated' \| 'flat'`                                    | `'default'` | Card style              |
+| `padding`     | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| 'none'`                       | `'md'`      | Internal padding        |
+| `hover`       | `boolean`                                                              | `false`     | Enable hover effect     |
+| `interactive` | `boolean`                                                              | `false`     | Cursor pointer          |
+| `borderColor` | `'default' \| 'accent' \| 'success' \| 'error' \| 'warning' \| 'info'` | `'default'` | Border color            |
+| `children`    | `ReactNode`                                                            | -           | Card content (required) |
 
 ### Variants
 
@@ -365,23 +373,24 @@ import { Card } from '@/components/ui';
 ## Input Component
 
 ### Import
+
 ```typescript
 import { Input } from '@/components/ui';
 ```
 
 ### Props
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `size` | `InputSize` | `'md'` | Input size |
-| `state` | `InputState` | `'default'` | Input state |
-| `label` | `string` | - | Field label |
-| `error` | `string` | - | Error message |
-| `hint` | `string` | - | Help text |
-| `icon` | `ReactNode` | - | Input icon |
-| `iconPosition` | `'left' \| 'right'` | `'left'` | Icon position |
-| `fullWidth` | `boolean` | `false` | Fill width |
-| All HTML input props | - | - | Standard input attributes |
+| Prop                 | Type                | Default     | Description               |
+| -------------------- | ------------------- | ----------- | ------------------------- |
+| `size`               | `InputSize`         | `'md'`      | Input size                |
+| `state`              | `InputState`        | `'default'` | Input state               |
+| `label`              | `string`            | -           | Field label               |
+| `error`              | `string`            | -           | Error message             |
+| `hint`               | `string`            | -           | Help text                 |
+| `icon`               | `ReactNode`         | -           | Input icon                |
+| `iconPosition`       | `'left' \| 'right'` | `'left'`    | Icon position             |
+| `fullWidth`          | `boolean`           | `false`     | Fill width                |
+| All HTML input props | -                   | -           | Standard input attributes |
 
 ### Basic Usage
 
@@ -514,21 +523,22 @@ import { Mail, Lock, Search } from 'lucide-react';
 ## Alert Component
 
 ### Import
+
 ```typescript
 import { Alert } from '@/components/ui';
 ```
 
 ### Props
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `variant` | `AlertVariant` | `'info'` | Alert type |
-| `title` | `string` | - | Alert title |
-| `description` | `string` | - | Alert message |
-| `icon` | `ReactNode` | - | Custom icon |
-| `closeable` | `boolean` | `false` | Show close button |
-| `onClose` | `() => void` | - | Close handler |
-| `children` | `ReactNode` | - | Custom content |
+| Prop          | Type           | Default  | Description       |
+| ------------- | -------------- | -------- | ----------------- |
+| `variant`     | `AlertVariant` | `'info'` | Alert type        |
+| `title`       | `string`       | -        | Alert title       |
+| `description` | `string`       | -        | Alert message     |
+| `icon`        | `ReactNode`    | -        | Custom icon       |
+| `closeable`   | `boolean`      | `false`  | Show close button |
+| `onClose`     | `() => void`   | -        | Close handler     |
+| `children`    | `ReactNode`    | -        | Custom content    |
 
 ### Variants
 
@@ -618,19 +628,20 @@ const [closed, setClosed] = useState(false);
 ## Divider Component
 
 ### Import
+
 ```typescript
 import { Divider } from '@/components/ui';
 ```
 
 ### Props
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `orientation` | `'horizontal' \| 'vertical'` | `'horizontal'` | Divider direction |
-| `spacing` | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` | Vertical spacing |
-| `color` | `'default' \| 'subtle' \| 'strong'` | `'default'` | Divider color |
-| `label` | `string` | - | Text label |
-| `labelPosition` | `'left' \| 'center' \| 'right'` | `'center'` | Label position |
+| Prop            | Type                                   | Default        | Description       |
+| --------------- | -------------------------------------- | -------------- | ----------------- |
+| `orientation`   | `'horizontal' \| 'vertical'`           | `'horizontal'` | Divider direction |
+| `spacing`       | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'`         | Vertical spacing  |
+| `color`         | `'default' \| 'subtle' \| 'strong'`    | `'default'`    | Divider color     |
+| `label`         | `string`                               | -              | Text label        |
+| `labelPosition` | `'left' \| 'center' \| 'right'`        | `'center'`     | Label position    |
 
 ### Basic Usage
 
@@ -696,19 +707,20 @@ import { Divider } from '@/components/ui';
 ## Skeleton Component
 
 ### Import
+
 ```typescript
 import { Skeleton } from '@/components/ui';
 ```
 
 ### Props
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `variant` | `'text' \| 'card' \| 'avatar'` | `'text'` | Skeleton type |
-| `count` | `number` | `1` | Number of lines |
-| `height` | `string` | `'h-4'` | Skeleton height |
-| `width` | `string` | `'w-full'` | Skeleton width |
-| `circle` | `boolean` | `false` | Circular skeleton |
+| Prop      | Type                           | Default    | Description       |
+| --------- | ------------------------------ | ---------- | ----------------- |
+| `variant` | `'text' \| 'card' \| 'avatar'` | `'text'`   | Skeleton type     |
+| `count`   | `number`                       | `1`        | Number of lines   |
+| `height`  | `string`                       | `'h-4'`    | Skeleton height   |
+| `width`   | `string`                       | `'w-full'` | Skeleton width    |
+| `circle`  | `boolean`                      | `false`    | Circular skeleton |
 
 ### Variants
 
@@ -881,4 +893,3 @@ describe('Button Component', () => {
 
 **Last Updated**: October 2024
 **Component Library Version**: 1.0.0
-

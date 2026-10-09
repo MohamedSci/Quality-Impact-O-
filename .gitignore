@@ -8,6 +8,13 @@ lerna-debug.log*
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+playwright-report/
+playwright-report/data/
+test-results/
+playwright-report\data\
+test-results\
+playwright-report\data\
+playwright-report/data/
 
 # Runtime data
 pids
@@ -147,5 +154,8 @@ vite.config.ts.timestamp-*
 
 # TypeScript build info (workspace-wide)
 **/*.tsbuildinfo
+
+# Next.js auto-generated types
+next-env.d.ts
 
 roduction-qa-paas-firebase-adminsdk-fbsvc-a791e5236d.json

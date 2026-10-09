@@ -37,11 +37,7 @@ export const Divider: React.FC<DividerProps> = ({
   if (orientation === 'vertical') {
     return (
       <div
-        className={clsx(
-          'w-px h-full',
-          colorStyles[color],
-          className
-        )}
+        className={clsx('w-px h-full', colorStyles[color], className)}
         data-testid={testId}
         aria-label={ariaLabel}
       />
@@ -66,33 +62,16 @@ export const Divider: React.FC<DividerProps> = ({
         data-testid={testId}
         aria-label={ariaLabel}
       >
-        <div
-          className={clsx(
-            'flex-1 h-px',
-            colorStyles[color]
-          )}
-        />
-        <span className="text-sm text-neutral-500 font-medium px-2 whitespace-nowrap">
-          {label}
-        </span>
-        <div
-          className={clsx(
-            'flex-1 h-px',
-            colorStyles[color]
-          )}
-        />
+        <div className={clsx('flex-1 h-px', colorStyles[color])} />
+        <span className="text-sm text-neutral-500 font-medium px-2 whitespace-nowrap">{label}</span>
+        <div className={clsx('flex-1 h-px', colorStyles[color])} />
       </div>
     );
   }
 
   return (
     <div
-      className={clsx(
-        'h-px border-t',
-        spacingStyles[spacing],
-        colorStyles[color],
-        className
-      )}
+      className={clsx('h-px border-t', spacingStyles[spacing], colorStyles[color], className)}
       data-testid={testId}
       aria-label={ariaLabel}
     />

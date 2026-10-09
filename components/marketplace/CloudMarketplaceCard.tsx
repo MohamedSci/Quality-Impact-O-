@@ -18,9 +18,7 @@ interface CloudMarketplaceCardProps {
   marketplace: CloudMarketplaceOption;
 }
 
-export const CloudMarketplaceCard: React.FC<CloudMarketplaceCardProps> = ({
-  marketplace: m,
-}) => {
+export const CloudMarketplaceCard: React.FC<CloudMarketplaceCardProps> = ({ marketplace: m }) => {
   return (
     <Card
       hover
@@ -46,9 +44,7 @@ export const CloudMarketplaceCard: React.FC<CloudMarketplaceCardProps> = ({
           {m.badgeText}
         </h2>
 
-        <p className="text-sm text-slate-400 font-sans leading-normal">
-          {m.description}
-        </p>
+        <p className="text-sm text-slate-400 font-sans leading-normal">{m.description}</p>
       </div>
 
       <div className="pt-6 mt-6 border-t border-slate-border/60 flex items-center justify-between">

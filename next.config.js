@@ -99,11 +99,7 @@ const getCSPHeaders = () => {
     // Media Directives
     // ========================================================================
     // Video/audio loading policy
-    'media-src': [
-      "'self'",
-      'data:',
-      'https:',
-    ],
+    'media-src': ["'self'", 'data:', 'https:'],
 
     // ========================================================================
     // Object Directives
@@ -152,10 +148,7 @@ const getCSPHeaders = () => {
     // Worker Directive
     // ========================================================================
     // Service workers and web workers
-    'worker-src': [
-      "'self'",
-      'blob:',
-    ],
+    'worker-src': ["'self'", 'blob:'],
 
     // ========================================================================
     // Child Frame Directive
@@ -343,7 +336,6 @@ const securityHeaders = [
 
 const nextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
   compress: true,
 
   // ========================================================================

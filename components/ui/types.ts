@@ -4,27 +4,14 @@
  */
 
 export type ColorVariant =
-  | 'primary'
-  | 'secondary'
-  | 'accent'
-  | 'success'
-  | 'warning'
-  | 'error'
-  | 'info'
-  | 'neutral';
+  'primary' | 'secondary' | 'accent' | 'success' | 'warning' | 'error' | 'info' | 'neutral';
 
 export type SizeVariant = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
 export type ButtonVariant = 'solid' | 'outline' | 'ghost' | 'soft' | 'link';
 
 export type BadgeVariant =
-  | 'default'
-  | 'success'
-  | 'error'
-  | 'warning'
-  | 'info'
-  | 'accent'
-  | 'neutral';
+  'default' | 'success' | 'error' | 'warning' | 'info' | 'accent' | 'neutral';
 
 export type InputSize = 'sm' | 'md' | 'lg';
 

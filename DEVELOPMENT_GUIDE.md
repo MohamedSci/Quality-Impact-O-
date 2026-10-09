@@ -5,6 +5,7 @@ Complete guide for developing, testing, and deploying the Quality Impact OÜ web
 ## Environment Setup
 
 ### Prerequisites
+
 - Node.js 18+ or higher
 - npm or yarn package manager
 - Git for version control
@@ -32,6 +33,7 @@ npm run dev
 ```bash
 npm run dev
 ```
+
 - Starts Next.js on http://localhost:3000
 - Hot module reloading enabled
 - TypeScript compilation on-demand
@@ -86,6 +88,7 @@ npm test -- --coverage
 **Test Location**: `app/__tests__/` and `components/__tests__/`
 
 **Example Test**:
+
 ```typescript
 // components/ui/__tests__/Button.test.tsx
 import { render, screen } from '@testing-library/react';
@@ -134,6 +137,7 @@ npx playwright test --reporter=html
 ```
 
 **Audit Focus Areas**:
+
 - Keyboard navigation
 - Screen reader compatibility
 - Color contrast ratios
@@ -155,6 +159,7 @@ Test the production build locally before deploying.
 ### Vercel Deployment (Recommended)
 
 1. Push code to GitHub:
+
 ```bash
 git add .
 git commit -m "feat: initial QA-PaaS website scaffold"
@@ -235,7 +240,7 @@ export default function NewSectionPage() {
   return (
     <>
       <Navigation />
-      
+
       <main className="section-padding bg-slate-bg">
         <div className="container-max">
           <h1 className="text-4xl font-bold">Page Title</h1>
@@ -345,6 +350,7 @@ export default function Page() {
 ### Design Tokens
 
 Tailwind config colors are available:
+
 ```
 bg-primary           // #0EA5E9 (Electric Cyan)
 text-accent-neural   // #818CF8 (Neural Indigo)
@@ -384,6 +390,7 @@ import Image from 'next/image';
 ### Font Optimization
 
 Fonts are loaded in `app/layout.tsx`:
+
 ```typescript
 <link
   href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
@@ -400,6 +407,7 @@ npx lighthouse https://localhost:3000 --output=json
 ```
 
 Check Core Web Vitals:
+
 - LCP: < 1.2s ✓
 - INP: < 100ms ✓
 - CLS: = 0 ✓
@@ -409,6 +417,7 @@ Check Core Web Vitals:
 ### 1. Metadata
 
 All pages must have:
+
 ```typescript
 export const metadata: Metadata = {
   title: 'Page Title | QA-PaaS',
@@ -418,11 +427,13 @@ export const metadata: Metadata = {
     title: 'Page Title',
     description: 'Description',
     url: 'https://www.qa-paas.com/page',
-    images: [{
-      url: 'https://www.qa-paas.com/og-image.png',
-      width: 1200,
-      height: 630,
-    }],
+    images: [
+      {
+        url: 'https://www.qa-paas.com/og-image.png',
+        width: 1200,
+        height: 630,
+      },
+    ],
   },
 };
 ```
@@ -430,6 +441,7 @@ export const metadata: Metadata = {
 ### 2. Structured Data
 
 Add JSON-LD schemas:
+
 ```typescript
 const schema = {
   '@context': 'https://schema.org',
@@ -465,6 +477,7 @@ Sitemap: https://www.qa-paas.com/sitemap.xml
 ### CSP Headers
 
 Enforced in `next.config.js`:
+
 ```javascript
 'Content-Security-Policy': [
   "default-src 'self'",
@@ -477,6 +490,7 @@ Enforced in `next.config.js`:
 ### Never Commit Secrets
 
 Ensure `.env.local` is in `.gitignore`:
+
 ```
 .env
 .env.local
@@ -535,6 +549,7 @@ npm run test:a11y -- --reporter=verbose
 ## Git Workflow
 
 ### Branch Naming
+
 ```
 feature/add-new-component
 bugfix/fix-navigation-issue
@@ -543,6 +558,7 @@ refactor/optimize-performance
 ```
 
 ### Commit Messages
+
 ```
 feat: add marketplace hero component
 fix: resolve keyboard navigation in mobile menu
@@ -552,6 +568,7 @@ test: add accessibility tests for homepage
 ```
 
 ### Pull Request Template
+
 ```
 ## Description
 Brief description of changes.
@@ -606,17 +623,20 @@ Before deploying to production:
 ## Support & Resources
 
 ### Documentation
+
 - [Next.js Documentation](https://nextjs.org/docs)
 - [React Documentation](https://react.dev)
 - [Tailwind CSS](https://tailwindcss.com)
 - [TypeScript Handbook](https://www.typescriptlang.org/docs)
 
 ### Tools
+
 - [VS Code](https://code.visualstudio.com) - Recommended editor
 - [Vercel](https://vercel.com) - Deployment platform
 - [GitHub](https://github.com) - Version control
 
 ### Useful Extensions (VS Code)
+
 - ESLint
 - Prettier - Code formatter
 - Tailwind CSS IntelliSense

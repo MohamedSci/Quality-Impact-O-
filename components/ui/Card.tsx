@@ -8,7 +8,6 @@ interface CardProps extends ComponentBaseProps {
   interactive?: boolean;
   variant?: 'default' | 'elevated' | 'flat';
   padding?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'none';
-  borderColor?: 'default' | 'accent' | 'success' | 'error' | 'warning' | 'info';
 }
 
 const paddingStyles = {
@@ -26,15 +25,6 @@ const variantStyles = {
   flat: 'bg-neutral-800/50 border-0',
 };
 
-const borderColorStyles = {
-  default: 'border-neutral-700',
-  accent: 'border-accent-500/30',
-  success: 'border-success-500/30',
-  error: 'border-error-500/30',
-  warning: 'border-warning-500/30',
-  info: 'border-info-500/30',
-};
-
 export const Card: React.FC<CardProps> = ({
   children,
   className,
@@ -42,15 +32,14 @@ export const Card: React.FC<CardProps> = ({
   interactive = false,
   variant = 'default',
   padding = 'md',
-  borderColor = 'default',
   testId,
   ariaLabel,
 }) => {
   const baseStyles = 'rounded-xl transition-all duration-200';
-  const hoverStyles = hover ? 'hover:border-primary-500/50 hover:shadow-glow hover:-translate-y-1' : '';
-  const interactiveStyles = interactive
-    ? 'cursor-pointer hover:bg-neutral-700/50'
+  const hoverStyles = hover
+    ? 'hover:border-primary-500/50 hover:shadow-glow hover:-translate-y-1'
     : '';
+  const interactiveStyles = interactive ? 'cursor-pointer hover:bg-neutral-700/50' : '';
 
   return (
     <div

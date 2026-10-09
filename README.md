@@ -107,24 +107,29 @@ npm run test:a11y        # Accessibility audit tests
 ## Core Features
 
 ### 1. Marketplace Gateway
+
 - **AWS Marketplace Integration** - Direct linking to AWS Batch/Fargate offerings
 - **Azure DevOps Marketplace** - Pipeline task extension procurement
 - **Google Cloud Marketplace** - Cloud Run engine deployment
 
 ### 2. Cloud Marketplace Cards
+
 Dynamic, keyboard-accessible cards for each cloud provider with:
+
 - Cloud-specific branding and accent colors
 - Unified invoice messaging
 - Deep-link routing to marketplace listings
 - Hover animations and focus states
 
 ### 3. Enterprise Compliance
+
 - **Corporate Entity Disclosure** - Quality Impact OÜ legal information (Registry Code: 16842011)
 - **ISO/IEC 27001 & SOC2 Type II** - Security certifications
 - **GDPR Compliance** - Data protection & privacy policy
 - **Content Security Policy (CSP)** - Strict headers in next.config.js
 
 ### 4. Accessibility (WCAG 2.1 AAA)
+
 - Semantic HTML5 structure
 - Keyboard navigation support with visible focus rings
 - Screen reader friendly (`aria-live`, `aria-expanded`, etc.)
@@ -132,6 +137,7 @@ Dynamic, keyboard-accessible cards for each cloud provider with:
 - Automated Axe-core accessibility testing
 
 ### 5. Performance Optimization
+
 - Next.js App Router with Server Components by default
 - Image optimization via next/image
 - Dynamic imports for code splitting
@@ -143,15 +149,11 @@ Dynamic, keyboard-accessible cards for each cloud provider with:
 ### Color Palette
 
 ```css
---slate-bg: #0F172A         /* Deep Slate (Canvas) */
---slate-surface: #1E293B    /* Slate 800 (Surface Panels) */
---slate-border: #334155     /* Slate 600 (Borders) */
---primary: #0EA5E9          /* Electric Cyan */
---primary-light: #38BDF8    /* Light Cyan */
---accent-neural: #818CF8    /* Neural Indigo (AI) */
---status-pass: #10B981      /* Green (Pass) */
---status-fail: #EF4444      /* Red (Fail) */
---status-flaky: #F59E0B     /* Amber (Flaky) */
+--slate-bg: #0f172a /* Deep Slate (Canvas) */ --slate-surface: #1e293b
+  /* Slate 800 (Surface Panels) */ --slate-border: #334155 /* Slate 600 (Borders) */
+  --primary: #0ea5e9 /* Electric Cyan */ --primary-light: #38bdf8 /* Light Cyan */
+  --accent-neural: #818cf8 /* Neural Indigo (AI) */ --status-pass: #10b981 /* Green (Pass) */
+  --status-fail: #ef4444 /* Red (Fail) */ --status-flaky: #f59e0b /* Amber (Flaky) */;
 ```
 
 ### Typography
@@ -163,20 +165,24 @@ Dynamic, keyboard-accessible cards for each cloud provider with:
 ### Component Variants
 
 #### Button
+
 - `variant`: primary, secondary, ghost, outline
 - `size`: sm, md, lg
 - `isLoading`: boolean for loading state
 
 #### Badge
+
 - `variant`: default, success, error, warning, info
 
 #### Card
+
 - `hover`: boolean for hover animation
 - `variant`: default, elevated
 
 ## SEO & Structured Data
 
 All pages include:
+
 - Dynamic `generateMetadata()` with OpenGraph & Twitter Cards
 - JSON-LD `SoftwareApplication` schema linking to `Organization` (Quality Impact OÜ)
 - Canonical URLs for SEO consolidation
@@ -218,6 +224,7 @@ npm run test:a11y
 ```
 
 This runs Playwright with Axe-core to verify:
+
 - WCAG 2.1 AAA compliance
 - Keyboard navigation support
 - Semantic HTML structure
@@ -230,12 +237,12 @@ This runs Playwright with Axe-core to verify:
 
 ### Target SLA
 
-| Metric | Target | Status |
-|--------|--------|--------|
-| LCP (Largest Contentful Paint) | < 1.2s | ✓ |
-| INP (Interaction to Next Paint) | < 100ms | ✓ |
-| CLS (Cumulative Layout Shift) | = 0 | ✓ |
-| FCP (First Contentful Paint) | < 0.8s | ✓ |
+| Metric                          | Target  | Status |
+| ------------------------------- | ------- | ------ |
+| LCP (Largest Contentful Paint)  | < 1.2s  | ✓      |
+| INP (Interaction to Next Paint) | < 100ms | ✓      |
+| CLS (Cumulative Layout Shift)   | = 0     | ✓      |
+| FCP (First Contentful Paint)    | < 0.8s  | ✓      |
 
 ### Lighthouse Audit
 
@@ -249,6 +256,7 @@ npm run start
 ```
 
 Target scores:
+
 - **Performance**: 90+
 - **Accessibility**: 95+
 - **Best Practices**: 95+
@@ -257,22 +265,26 @@ Target scores:
 ## Pages
 
 ### Homepage (`/`)
+
 - Hero section with marketplace gateway
 - Feature cards (E2E, API, Security, AI, Cloud, Billing)
 - Call-to-action section
 
 ### Engines (`/engines`)
+
 - Six QA engine descriptions
 - Feature matrices per engine
 - Integration CTA
 
 ### Marketplaces (`/marketplaces`)
+
 - Cloud marketplace cards (AWS, Azure, GCP)
 - Procurement workflow (4-step guide)
 - Compliance certifications
 - Platform-specific deployment guides
 
 ### Company Info (`/legal/company-info`)
+
 - Quality Impact OÜ corporate details
 - Registry code, VAT ID, address
 - Legal entity information
@@ -280,6 +292,7 @@ Target scores:
 - Compliance certifications
 
 ### Privacy & Security (`/legal/privacy`)
+
 - Security architecture overview
 - Encryption, access control, audit logging
 - ISO 27001 & SOC2 details
@@ -337,16 +350,19 @@ Visit `http://localhost:3000`
 ## Code Quality
 
 ### Type Safety
+
 - TypeScript Strict Mode enabled
 - No implicit `any` types
 - Full type coverage in components
 
 ### Linting
+
 ```bash
 npm run lint
 ```
 
 ### Formatting
+
 ```bash
 npm run format
 ```
@@ -362,6 +378,7 @@ npm run format
 ## Corporate Information
 
 **Quality Impact OÜ**
+
 - Registry Code: 16842011
 - VAT ID: EE102155066
 - Location: Harju maakond, Tallinn, Estonia

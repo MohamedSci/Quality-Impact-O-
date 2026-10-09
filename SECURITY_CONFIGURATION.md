@@ -20,6 +20,7 @@ Complete security configuration for QA-PaaS platform covering infrastructure, ap
 ### Phase 1: Pre-Deployment (Development)
 
 #### Application Security
+
 - ✅ Content Security Policy configured
 - ✅ All security headers implemented
 - ✅ HTTPS enforced (HSTS enabled)
@@ -31,6 +32,7 @@ Complete security configuration for QA-PaaS platform covering infrastructure, ap
 - ✅ CSRF protection enabled
 
 #### Dependency Security
+
 - ✅ npm audit clean (0 vulnerabilities)
 - ✅ Dependencies updated to latest secure versions
 - ✅ No dev dependencies in production
@@ -38,6 +40,7 @@ Complete security configuration for QA-PaaS platform covering infrastructure, ap
 - ✅ Supply chain security verified
 
 #### Code Quality
+
 - ✅ TypeScript strict mode enabled
 - ✅ ESLint security rules enabled
 - ✅ No console.log in production code
@@ -47,6 +50,7 @@ Complete security configuration for QA-PaaS platform covering infrastructure, ap
 ### Phase 2: Deployment (Staging)
 
 #### Infrastructure
+
 - ✅ SSL/TLS certificate installed
 - ✅ Certificate auto-renewal configured
 - ✅ WAF (Web Application Firewall) enabled
@@ -54,6 +58,7 @@ Complete security configuration for QA-PaaS platform covering infrastructure, ap
 - ✅ Rate limiting enabled
 
 #### Database Security
+
 - ✅ Database credentials in environment variables
 - ✅ Database connections encrypted
 - ✅ Automatic backups enabled
@@ -61,6 +66,7 @@ Complete security configuration for QA-PaaS platform covering infrastructure, ap
 - ✅ Disaster recovery plan tested
 
 #### Monitoring
+
 - ✅ Security logging enabled
 - ✅ Error tracking configured (Sentry, etc.)
 - ✅ Performance monitoring set up
@@ -70,6 +76,7 @@ Complete security configuration for QA-PaaS platform covering infrastructure, ap
 ### Phase 3: Production (Live)
 
 #### Access Control
+
 - ✅ MFA enabled for admin access
 - ✅ IP whitelisting configured
 - ✅ SSH keys rotated
@@ -77,6 +84,7 @@ Complete security configuration for QA-PaaS platform covering infrastructure, ap
 - ✅ Service accounts created with minimal permissions
 
 #### Compliance
+
 - ✅ GDPR compliance verified
 - ✅ Data retention policies implemented
 - ✅ Privacy policy published
@@ -84,6 +92,7 @@ Complete security configuration for QA-PaaS platform covering infrastructure, ap
 - ✅ Security policy published
 
 #### Operations
+
 - ✅ 24/7 security monitoring active
 - ✅ Incident response plan documented
 - ✅ Security team trained
@@ -138,6 +147,7 @@ ENABLE_AUDIT_LOG=true
 ### Security Best Practices for Env Variables
 
 1. **Never Commit Secrets**
+
    ```bash
    # .gitignore
    .env
@@ -146,6 +156,7 @@ ENABLE_AUDIT_LOG=true
    ```
 
 2. **Use Environment-Specific Files**
+
    ```
    .env.example           # Template (no secrets)
    .env.production        # Production (on server only)
@@ -247,7 +258,10 @@ export async function checkRateLimit(request: NextRequest) {
 import { z } from 'zod';
 
 const emailSchema = z.string().email();
-const passwordSchema = z.string().min(12).regex(/^(?=.*[A-Z])(?=.*[0-9])/);
+const passwordSchema = z
+  .string()
+  .min(12)
+  .regex(/^(?=.*[A-Z])(?=.*[0-9])/);
 const contactFormSchema = z.object({
   email: emailSchema,
   name: z.string().min(1).max(100),
@@ -309,11 +323,7 @@ export function verifyToken(token: string): TokenPayload | null {
 }
 
 export function createToken(userId: string, email: string, role: string) {
-  return jwt.sign(
-    { userId, email, role },
-    process.env.JWT_SECRET!,
-    { expiresIn: '24h' }
-  );
+  return jwt.sign({ userId, email, role }, process.env.JWT_SECRET!, { expiresIn: '24h' });
 }
 ```
 
@@ -360,10 +370,7 @@ export async function hashPassword(password: string): Promise<string> {
   return bcrypt.hash(password, SALT_ROUNDS);
 }
 
-export async function verifyPassword(
-  password: string,
-  hash: string
-): Promise<boolean> {
+export async function verifyPassword(password: string, hash: string): Promise<boolean> {
   return bcrypt.compare(password, hash);
 }
 ```
@@ -393,11 +400,7 @@ export function encryptData(data: string): string {
 export function decryptData(encryptedData: string): string {
   const [iv, encrypted, authTag] = encryptedData.split(':');
 
-  const decipher = crypto.createDecipheriv(
-    algorithm,
-    key,
-    Buffer.from(iv, 'hex')
-  );
+  const decipher = crypto.createDecipheriv(algorithm, key, Buffer.from(iv, 'hex'));
   decipher.setAuthTag(Buffer.from(authTag, 'hex'));
 
   let decrypted = decipher.update(encrypted, 'hex', 'utf8');
@@ -608,6 +611,7 @@ export async function POST(request: NextRequest) {
 ### Emergency Procedures
 
 #### Database Compromise
+
 ```bash
 # 1. Revoke database credentials
 # 2. Rotate all API keys
@@ -617,6 +621,7 @@ export async function POST(request: NextRequest) {
 ```
 
 #### Credential Leak
+
 ```bash
 # 1. Revoke leaked credentials immediately
 # 2. Scan for unauthorized access
@@ -626,6 +631,7 @@ export async function POST(request: NextRequest) {
 ```
 
 #### DDoS Attack
+
 ```bash
 # 1. Enable WAF rules
 # 2. Increase rate limiting
@@ -657,4 +663,3 @@ export async function POST(request: NextRequest) {
 **Security Configuration Version**: 1.0.0
 **Last Updated**: October 2024
 **Status**: ✅ Production Ready
-

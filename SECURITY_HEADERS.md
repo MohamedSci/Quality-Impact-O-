@@ -17,18 +17,18 @@ Complete security headers and Content Security Policy (CSP) configuration for Qu
 
 ### Security Headers Implemented
 
-| Header | Purpose | Value |
-|--------|---------|-------|
-| **Strict-Transport-Security** | Force HTTPS | max-age=31536000; includeSubDomains; preload |
-| **Content-Security-Policy** | Prevent XSS/injection | Strict policy (see CSP section) |
-| **X-Frame-Options** | Clickjacking protection | DENY |
-| **X-Content-Type-Options** | MIME sniffing prevention | nosniff |
-| **X-XSS-Protection** | XSS filter (legacy) | 1; mode=block |
-| **Referrer-Policy** | Referrer control | strict-origin-when-cross-origin |
-| **Permissions-Policy** | Feature control | Camera, microphone, geolocation disabled |
-| **Cross-Origin-Opener-Policy** | Context isolation | same-origin |
-| **Cross-Origin-Embedder-Policy** | Resource requirement | require-corp |
-| **Cross-Origin-Resource-Policy** | Embedding control | cross-origin |
+| Header                           | Purpose                  | Value                                        |
+| -------------------------------- | ------------------------ | -------------------------------------------- |
+| **Strict-Transport-Security**    | Force HTTPS              | max-age=31536000; includeSubDomains; preload |
+| **Content-Security-Policy**      | Prevent XSS/injection    | Strict policy (see CSP section)              |
+| **X-Frame-Options**              | Clickjacking protection  | DENY                                         |
+| **X-Content-Type-Options**       | MIME sniffing prevention | nosniff                                      |
+| **X-XSS-Protection**             | XSS filter (legacy)      | 1; mode=block                                |
+| **Referrer-Policy**              | Referrer control         | strict-origin-when-cross-origin              |
+| **Permissions-Policy**           | Feature control          | Camera, microphone, geolocation disabled     |
+| **Cross-Origin-Opener-Policy**   | Context isolation        | same-origin                                  |
+| **Cross-Origin-Embedder-Policy** | Resource requirement     | require-corp                                 |
+| **Cross-Origin-Resource-Policy** | Embedding control        | cross-origin                                 |
 
 ---
 
@@ -46,12 +46,15 @@ The CSP is configured using a **strict, deny-by-default approach**:
 ### CSP Directives
 
 #### Default Directive
+
 ```
 default-src 'self'
 ```
+
 Fallback for all other directives. Only same-origin resources allowed.
 
 #### Script Sources
+
 ```
 script-src:
   'self'                          # Same-origin scripts
@@ -64,6 +67,7 @@ script-src:
 **Protected Against**: XSS attacks, malicious script injection
 
 #### Style Sources
+
 ```
 style-src:
   'self'                          # Same-origin styles
@@ -74,6 +78,7 @@ style-src:
 **Protected Against**: Style-based attacks, unauthorized styling
 
 #### Font Sources
+
 ```
 font-src:
   'self'
@@ -84,6 +89,7 @@ font-src:
 **Protected Against**: Font file injection attacks
 
 #### Image Sources
+
 ```
 img-src:
   'self'
@@ -101,6 +107,7 @@ img-src:
 **Protected Against**: Image-based attacks, data exfiltration
 
 #### Connection Sources (XHR, fetch, WebSocket)
+
 ```
 connect-src:
   'self'                          # Same-origin requests
@@ -115,6 +122,7 @@ connect-src:
 **Protected Against**: Data exfiltration, command and control, malicious API calls
 
 #### Frame & Form Policies
+
 ```
 frame-ancestors 'none'             # Can't be embedded in iframes
 form-action 'self'                 # Forms submit to own domain
@@ -124,6 +132,7 @@ base-uri 'self'                    # Base URL can't be changed
 **Protected Against**: Clickjacking, form hijacking, URL manipulation
 
 #### Plugin & Object Policies
+
 ```
 object-src 'none'                  # No Flash, PDF plugins
 manifest-src 'self'                # Only own manifest
@@ -132,6 +141,7 @@ manifest-src 'self'                # Only own manifest
 **Protected Against**: Plugin-based exploits
 
 #### Worker Policies
+
 ```
 worker-src 'self' blob:            # Service workers and web workers
 child-src 'self'                   # Child frames
@@ -140,6 +150,7 @@ child-src 'self'                   # Child frames
 **Protected Against**: Malicious worker injection
 
 #### Special Directives
+
 ```
 upgrade-insecure-requests          # Automatically upgrade HTTP to HTTPS
 block-all-mixed-content            # Block mixed HTTP/HTTPS content
@@ -159,6 +170,7 @@ Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
 **Purpose**: Force all connections to use HTTPS
 
 **Parameters**:
+
 - `max-age=31536000`: Cache policy for 1 year (31536000 seconds)
 - `includeSubDomains`: Apply to all subdomains (*.qa-paas.com)
 - `preload`: Allow inclusion in HSTS preload lists
@@ -172,6 +184,7 @@ Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
 **Purpose**: Prevent XSS, injection attacks, and unauthorized content loading
 
 **Strictness Levels**:
+
 - **Strict** (Recommended): `'self'` only, no inline code
 - **Moderate**: Allow trusted CDNs and analytics
 - **Permissive**: Allow inline code (less secure)
@@ -189,6 +202,7 @@ X-Frame-Options: DENY
 **Purpose**: Prevent clickjacking attacks
 
 **Options**:
+
 - `DENY`: Page can't be framed
 - `SAMEORIGIN`: Can be framed by same origin only
 - `ALLOW-FROM origin`: Can be framed by specific origin (deprecated)
@@ -208,6 +222,7 @@ X-Content-Type-Options: nosniff
 Forces browser to respect `Content-Type` header. Prevents malicious files from being misinterpreted.
 
 **Example Attack Prevented**:
+
 ```
 Server returns: Content-Type: image/jpeg
 File contains: Malicious JavaScript
@@ -226,6 +241,7 @@ X-XSS-Protection: 1; mode=block
 **Purpose**: Enable browser's XSS filter (legacy)
 
 **Parameters**:
+
 - `1`: Enable XSS filter
 - `mode=block`: Block page when XSS detected (rather than sanitizing)
 
@@ -242,6 +258,7 @@ Referrer-Policy: strict-origin-when-cross-origin
 **Purpose**: Control referrer information sent with requests
 
 **Behavior**:
+
 - Same-origin: Send full URL
 - Cross-origin: Send only origin (no path/query)
 - HTTPS → HTTP: Send nothing
@@ -259,6 +276,7 @@ Permissions-Policy: accelerometer=(), camera=(), microphone=(), geolocation=(), 
 **Purpose**: Disable browser features not needed by the application
 
 **Disabled Features**:
+
 - Camera, microphone, geolocation
 - Battery status, USB access
 - Payment APIs, VR/XR features
@@ -322,6 +340,7 @@ Cross-Origin-Resource-Policy: cross-origin
 ### ISO/IEC 27001
 
 ✅ **Controls Addressed**:
+
 - A.14.2.4: Secure development environment
 - A.14.2.5: Secure development process
 - A.14.3.1: Segregation of testing facilities
@@ -331,6 +350,7 @@ Cross-Origin-Resource-Policy: cross-origin
 ### SOC2 Type II
 
 ✅ **Criteria Met**:
+
 - **CC6.1**: Logical access controls
 - **CC7.2**: Encryption
 - **CC9.2**: Infrastructure security
@@ -340,6 +360,7 @@ Cross-Origin-Resource-Policy: cross-origin
 ### GDPR
 
 ✅ **Compliance**:
+
 - Article 32: Security of processing
 - Technical and organizational measures implemented
 - Data protection by design
@@ -349,6 +370,7 @@ Cross-Origin-Resource-Policy: cross-origin
 ### OWASP Top 10
 
 **Protections**:
+
 - ✅ A01: Broken Access Control
 - ✅ A03: Injection (CSP, MIME sniffing protection)
 - ✅ A05: Broken Access Control
@@ -386,7 +408,7 @@ curl -I https://www.qa-paas.com
 
 ```javascript
 // Open browser console and check headers
-fetch('https://www.qa-paas.com').then(r => {
+fetch('https://www.qa-paas.com').then((r) => {
   console.log('CSP:', r.headers.get('Content-Security-Policy'));
   console.log('HSTS:', r.headers.get('Strict-Transport-Security'));
   console.log('X-Frame-Options:', r.headers.get('X-Frame-Options'));
@@ -440,12 +462,14 @@ CSP violations can be reported to a monitoring endpoint:
 **Symptom**: Scripts from third-party services not loading
 
 **Solution**:
+
 1. Check CSP error in browser console
 2. Add domain to appropriate directive in next.config.js
 3. Test with `curl -I` to verify header
 4. Monitor CSP reports
 
 **Example**:
+
 ```javascript
 'script-src': [
   "'self'",
@@ -459,6 +483,7 @@ CSP violations can be reported to a monitoring endpoint:
 **Symptom**: Page displays without CSS styling
 
 **Solution**:
+
 1. Verify `style-src` includes required sources
 2. Check for inline styles (may need nonce-based approach)
 3. Ensure Google Fonts domain is allowed
@@ -468,11 +493,13 @@ CSP violations can be reported to a monitoring endpoint:
 **Symptom**: Embedded content (marketplace listings, etc.) not showing
 
 **Solution**:
+
 1. Verify `frame-src` includes the domain
 2. Ensure origin allows embedding with CORS headers
 3. Add to allowed frame-src list
 
 **Example**:
+
 ```javascript
 'frame-src': [
   "'self'",
@@ -487,11 +514,13 @@ CSP violations can be reported to a monitoring endpoint:
 **Symptom**: JavaScript console shows CSP violation for API calls
 
 **Solution**:
+
 1. Check `connect-src` includes API domain
 2. Verify WebSocket URLs if using real-time features
 3. Include subdomain wildcards if needed
 
 **Example**:
+
 ```javascript
 'connect-src': [
   "'self'",
@@ -508,12 +537,14 @@ CSP violations can be reported to a monitoring endpoint:
 ### 1. CSP Development vs Production
 
 **Development** (More permissive for debugging):
+
 ```javascript
 // Allow more sources for local development
 'script-src': ["'self'", "'unsafe-inline'", 'localhost:*']
 ```
 
 **Production** (Strict):
+
 ```javascript
 // Only production-approved sources
 'script-src': ["'self'", 'https://trusted-domain.com']
@@ -536,6 +567,7 @@ export function middleware(request: NextRequest) {
 ### 3. Monitoring & Alerting
 
 Set up alerts for:
+
 - CSP violations
 - Failed HSTS upgrade attempts
 - Suspicious referrer patterns
@@ -554,16 +586,19 @@ Set up alerts for:
 ### From Old to New Configuration
 
 **Old Configuration**:
+
 ```javascript
-"script-src 'self' 'unsafe-eval' 'unsafe-inline'"
+"script-src 'self' 'unsafe-eval' 'unsafe-inline'";
 ```
 
 **New Configuration**:
+
 ```javascript
-"script-src 'self' https://va.vercel-scripts.com"
+"script-src 'self' https://va.vercel-scripts.com";
 ```
 
 **Benefits**:
+
 - ✅ 80% more secure
 - ✅ Removes unsafe directives
 - ✅ Maintains functionality
@@ -601,4 +636,3 @@ Set up alerts for:
 **Security Headers Version**: 1.0.0
 **Last Updated**: October 2024
 **Status**: ✅ Production Ready
-

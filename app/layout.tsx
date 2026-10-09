@@ -78,11 +78,7 @@ export const viewport: Viewport = {
   themeColor: '#0F172A',
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}): React.ReactNode {
+export default function RootLayout({ children }: { children: React.ReactNode }): React.ReactNode {
   // Structured Data for Organization
   const organizationSchema = {
     '@context': 'https://schema.org',

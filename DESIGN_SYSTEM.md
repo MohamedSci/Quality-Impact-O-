@@ -69,34 +69,43 @@ accent-950: #312E81
 ### Semantic Palettes
 
 #### Success (Green)
+
 ```
 success-50:  #F0FDF4   → success-950: #051E0F
 Primary: success-500 (#22C55E)
 ```
+
 **Usage**: Confirmations, successful states, passed tests
 
 #### Error (Red)
+
 ```
 error-50:  #FEF2F2   → error-950: #4C0519
 Primary: error-500 (#EF4444)
 ```
+
 **Usage**: Errors, failures, destructive actions
 
 #### Warning (Amber)
+
 ```
 warning-50:  #FFFBEB   → warning-950: #451A03
 Primary: warning-500 (#F59E0B)
 ```
+
 **Usage**: Warnings, flaky tests, cautions, attention needed
 
 #### Info (Sky)
+
 ```
 info-50:  #F0F9FF   → info-950: #06254E
 Primary: info-500 (#0EA5E9)
 ```
+
 **Usage**: Information, help text, notifications
 
 #### Neutral (Slate)
+
 ```
 neutral-50:   #F8FAFC  (Lightest)
 neutral-100:  #F1F5F9
@@ -292,6 +301,7 @@ import { Button } from '@/components/ui';
 ```
 
 **Variants:**
+
 - `solid` - Filled button (default)
 - `outline` - Border with transparent background
 - `soft` - Subtle background with text color
@@ -553,6 +563,7 @@ All components follow WCAG 2.1 AAA standards:
 ## Performance Optimizations
 
 ### Image Optimization
+
 ```typescript
 import Image from 'next/image';
 
@@ -566,6 +577,7 @@ import Image from 'next/image';
 ```
 
 ### Code Splitting
+
 ```typescript
 import dynamic from 'next/dynamic';
 
@@ -575,6 +587,7 @@ const HeavyComponent = dynamic(() => import('@/components/Heavy'), {
 ```
 
 ### CSS Optimization
+
 - Tailwind v4 automatically purges unused CSS
 - Custom components use `@apply` directives
 - Minimal JavaScript for styling
@@ -584,6 +597,7 @@ const HeavyComponent = dynamic(() => import('@/components/Heavy'), {
 ## Best Practices
 
 1. **Use semantic color names**
+
    ```typescript
    // ✅ Good
    <Button variant="solid" color="success">Save</Button>
@@ -593,6 +607,7 @@ const HeavyComponent = dynamic(() => import('@/components/Heavy'), {
    ```
 
 2. **Maintain consistent spacing**
+
    ```typescript
    // ✅ Good
    <div className="space-y-4 p-6">
@@ -608,6 +623,7 @@ const HeavyComponent = dynamic(() => import('@/components/Heavy'), {
    ```
 
 3. **Use responsive utilities**
+
    ```typescript
    // ✅ Good
    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -644,11 +660,7 @@ interface TooltipProps extends ComponentBaseProps {
   children: React.ReactNode;
 }
 
-export const Tooltip: React.FC<TooltipProps> = ({
-  content,
-  position = 'top',
-  children,
-}) => {
+export const Tooltip: React.FC<TooltipProps> = ({ content, position = 'top', children }) => {
   // Implementation
 };
 
@@ -683,4 +695,3 @@ colors: {
 **Design System Version**: 1.0.0
 **Last Updated**: October 2024
 **Maintained by**: Quality Impact OÜ Engineering
-

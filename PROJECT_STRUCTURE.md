@@ -7,6 +7,7 @@ This is a **production-grade Next.js 16 website scaffold** for Quality Impact O�
 ### What Was Created
 
 #### 1. Configuration Files (7 files)
+
 ```
 ✓ package.json               - Dependencies & scripts (Next.js 16, React 19, TypeScript)
 ✓ tsconfig.json              - TypeScript strict mode configuration
@@ -18,6 +19,7 @@ This is a **production-grade Next.js 16 website scaffold** for Quality Impact O�
 ```
 
 #### 2. Application Layout & Pages (5 pages)
+
 ```
 app/
 ├── layout.tsx               - Root layout with global metadata, JSON-LD, fonts
@@ -32,6 +34,7 @@ app/
 ```
 
 #### 3. React Components (10 components)
+
 ```
 components/
 ├── ui/
@@ -51,6 +54,7 @@ components/
 ```
 
 #### 4. Testing Infrastructure (4 files)
+
 ```
 ✓ jest.config.js             - Jest configuration for unit tests
 ✓ jest.setup.js              - Jest DOM setup
@@ -59,12 +63,14 @@ components/
 ```
 
 #### 5. Documentation (2 files)
+
 ```
 ✓ README.md                  - Comprehensive project documentation
 ✓ PROJECT_STRUCTURE.md       - This file (project overview)
 ```
 
 #### 6. Utilities & Config (2 files)
+
 ```
 ✓ .gitignore                 - Git ignore patterns
 ✓ ai-prompt.md               - Original master system prompt (reference)
@@ -75,17 +81,20 @@ components/
 ## Implemented Specifications
 
 ### ✅ Performance SLA (Core Web Vitals)
+
 - **LCP < 1.2s**: Achieved through Server Components, dynamic imports, Tailwind optimization
 - **INP < 100ms**: Virtualized rendering, debounced event handlers
 - **CLS = 0**: Fixed layout constraints, explicit dimensions
 
 ### ✅ Security & Compliance
+
 - **Content Security Policy (CSP)**: Strict headers enforced in next.config.js
 - **ISO 27001 & SOC2 Compliant Architecture**: Documented in privacy policy
 - **GDPR Data Protection**: Privacy page with data handling details
 - **OWASP Top 10**: Security standards implemented in CSP & authentication
 
 ### ✅ Accessibility (WCAG 2.1 AAA)
+
 - **Semantic HTML5**: Proper heading hierarchy, nav, footer, main landmarks
 - **Keyboard Navigation**: All interactive elements focusable with visible focus rings
 - **Screen Reader Support**: ARIA attributes (`aria-label`, `aria-expanded`, `aria-live`)
@@ -93,24 +102,28 @@ components/
 - **Automated Testing**: Playwright + Axe-core accessibility audits
 
 ### ✅ SEO & Structured Data
+
 - **Dynamic Metadata**: generateMetadata() on every page
 - **JSON-LD Schemas**: Organization, SoftwareApplication, WebPage schemas
 - **OpenGraph & Twitter Cards**: All pages have proper social meta tags
 - **Canonical URLs**: Proper canonicalization to prevent duplicate content
 
 ### ✅ Marketplace Integration
+
 - **AWS Marketplace**: Deep link to AWS Batch/Fargate offering
 - **Azure DevOps Marketplace**: Pipeline extension procurement link
 - **Google Cloud Marketplace**: Cloud Run engine deployment link
 - **Unified Cloud Procurement**: 4-step deployment workflow documented
 
 ### ✅ Enterprise Branding
+
 - **Corporate Entity Disclosure**: Quality Impact OÜ details (Registry: 16842011)
 - **Product vs. Vendor Clarity**: QA-PaaS (product) vs. Quality Impact OÜ (vendor)
 - **Legal & Compliance Pages**: Company info, privacy, security policies
 - **Compliance Badges**: ISO/IEC 27001, SOC2 Type II, GDPR, CNCF
 
 ### ✅ Design System
+
 - **Color Palette**: Deep Slate (#0F172A), Electric Cyan (#0EA5E9), Neural Indigo (#818CF8)
 - **Typography**: Inter/Plus Jakarta Sans (UI) + JetBrains Mono (Code)
 - **Component Variants**: Button, Badge, Card with multiple states
@@ -119,24 +132,29 @@ components/
 ## Quick Start Instructions
 
 ### 1. Install Dependencies
+
 ```bash
 cd "d:\Coding-Solutions\FINAL\Quality Impact OÜ"
 npm install
 ```
 
 ### 2. Start Development Server
+
 ```bash
 npm run dev
 ```
+
 Open http://localhost:3000 in your browser.
 
 ### 3. Build for Production
+
 ```bash
 npm run build
 npm start
 ```
 
 ### 4. Run Quality Checks
+
 ```bash
 # Type checking
 npm run type-check
@@ -160,42 +178,48 @@ npm run test:a11y
 ## Key Features by Page
 
 ### Homepage (/)
+
 ✓ Hero section with gradient text  
 ✓ Marketplace gateway cards (AWS/Azure/GCP)  
 ✓ Six feature cards (Zap, Shield, Trending, Cloud, CPU, Check)  
 ✓ Call-to-action buttons  
-✓ Corporate footer with compliance badges  
+✓ Corporate footer with compliance badges
 
 ### Engines (/engines)
+
 ✓ Six QA engine descriptions (E2E, API, Security, AI Triage, Telemetry, Analytics)  
 ✓ Feature matrices per engine  
 ✓ Icon-based visual hierarchy  
-✓ Integration CTA section  
+✓ Integration CTA section
 
 ### Marketplaces (/marketplaces)
+
 ✓ Cloud marketplace hero  
 ✓ 4-step procurement workflow  
 ✓ Compliance certifications section  
 ✓ Platform-specific deployment guides  
-✓ Feature matrices per cloud provider  
+✓ Feature matrices per cloud provider
 
 ### Company Info (/legal/company-info)
+
 ✓ Corporate legal details (Registry Code: 16842011)  
 ✓ VAT ID and registered address  
 ✓ Contact information sections  
 ✓ Leadership team placeholders  
-✓ Compliance certifications  
+✓ Compliance certifications
 
 ### Privacy & Security (/legal/privacy)
+
 ✓ Security pillars (Encryption, Zero-Knowledge, IAM, Residency, Audit, Incident Response)  
 ✓ Compliance certifications (ISO 27001, SOC2, GDPR, OWASP)  
 ✓ Data handling policies  
 ✓ User privacy rights (GDPR)  
-✓ DPO contact information  
+✓ DPO contact information
 
 ## Design System Reference
 
 ### Colors
+
 ```
 Primary:        #0EA5E9 (Electric Cyan) - CTA & interactive elements
 Primary Light:  #38BDF8 (Light Cyan) - Hover states
@@ -209,6 +233,7 @@ Slate Border:   #334155 (Slate 600) - Border color
 ```
 
 ### Typography Sizes
+
 ```
 xs:   0.75rem  (12px)
 sm:   0.875rem (14px)

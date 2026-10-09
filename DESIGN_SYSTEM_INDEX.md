@@ -5,67 +5,76 @@ Comprehensive index and navigation guide for the QA-PaaS design system.
 ## 📚 Documentation Files
 
 ### 1. **DESIGN_SYSTEM.md** (400+ lines)
-   **Comprehensive design system reference**
-   - Color system philosophy and application
-   - Typography scale and font families
-   - Spacing & layout guidelines
-   - Component overview
-   - Accessibility standards
-   - Performance optimizations
-   - Best practices
-   - Extending the design system
 
-   **When to read**: First time learning the system, making design decisions
+**Comprehensive design system reference**
+
+- Color system philosophy and application
+- Typography scale and font families
+- Spacing & layout guidelines
+- Component overview
+- Accessibility standards
+- Performance optimizations
+- Best practices
+- Extending the design system
+
+**When to read**: First time learning the system, making design decisions
 
 ### 2. **COMPONENT_LIBRARY.md** (500+ lines)
-   **Detailed component showcase and API reference**
-   - Button component (5 variants, 5 sizes, 8 colors)
-   - Badge component (7 variants, 5 sizes)
-   - Card component (3 variants, 6 padding levels, 6 border colors)
-   - Input component (3 sizes, 5 states, icons)
-   - Alert component (5 variants, closeable)
-   - Divider component (orientation, labels, colors)
-   - Skeleton component (3 variants)
-   - Real-world examples
-   - Testing patterns
-   - Best practices
 
-   **When to read**: Building UI with specific components, looking for examples
+**Detailed component showcase and API reference**
+
+- Button component (5 variants, 5 sizes, 8 colors)
+- Badge component (7 variants, 5 sizes)
+- Card component (3 variants, 6 padding levels, 6 border colors)
+- Input component (3 sizes, 5 states, icons)
+- Alert component (5 variants, closeable)
+- Divider component (orientation, labels, colors)
+- Skeleton component (3 variants)
+- Real-world examples
+- Testing patterns
+- Best practices
+
+**When to read**: Building UI with specific components, looking for examples
 
 ### 3. **DESIGN_SYSTEM_SETUP.md** (300+ lines)
-   **Setup complete summary and next steps**
-   - What was created (components, tokens, docs)
-   - Design system highlights
-   - Component architecture
-   - Type safety details
-   - Usage examples
-   - Customization guide
-   - Quality checklist
-   - Deployment guide
 
-   **When to read**: Understanding what's been built, getting started
+**Setup complete summary and next steps**
+
+- What was created (components, tokens, docs)
+- Design system highlights
+- Component architecture
+- Type safety details
+- Usage examples
+- Customization guide
+- Quality checklist
+- Deployment guide
+
+**When to read**: Understanding what's been built, getting started
 
 ### 4. **DESIGN_TOKENS_REFERENCE.md** (400+ lines)
-   **Quick reference for all design tokens**
-   - Color palettes (11 complete palettes)
-   - Typography (font families, sizes, weights)
-   - Spacing & gap scale
-   - Border radius scale
-   - Shadows (standard, glow, inset, card)
-   - Animations (durations, easing, keyframes)
-   - Opacity scale
-   - Z-index scale
-   - Responsive breakpoints
-   - Component utilities
-   - Quick copy-paste snippets
 
-   **When to read**: Quick lookup during development, finding token values
+**Quick reference for all design tokens**
+
+- Color palettes (11 complete palettes)
+- Typography (font families, sizes, weights)
+- Spacing & gap scale
+- Border radius scale
+- Shadows (standard, glow, inset, card)
+- Animations (durations, easing, keyframes)
+- Opacity scale
+- Z-index scale
+- Responsive breakpoints
+- Component utilities
+- Quick copy-paste snippets
+
+**When to read**: Quick lookup during development, finding token values
 
 ---
 
 ## 🎨 Design Token Summary
 
 ### Color System
+
 ```
 11 Color Palettes:
 ├── Primary (Electric Cyan) - 11 shades
@@ -81,6 +90,7 @@ Total: 143 color tokens
 ```
 
 ### Typography
+
 ```
 30+ Font Sizes:
 ├── 6 Heading sizes (h1-h6)
@@ -96,6 +106,7 @@ Total: 143 color tokens
 ```
 
 ### Spacing
+
 ```
 12 Spacing Increments:
 ├── xs: 4px   (0.25rem)
@@ -115,6 +126,7 @@ Total: 143 color tokens
 ```
 
 ### Shadows
+
 ```
 15+ Shadow Presets:
 ├── Standard: xs, sm, md, lg, xl, 2xl, 3xl
@@ -125,6 +137,7 @@ Total: 143 color tokens
 ```
 
 ### Animations
+
 ```
 10+ Animation Keyframes:
 ├── Glow: pulse-glow, pulse-glow-lg
@@ -143,6 +156,7 @@ Easing: smooth, in-out, bounce
 ## 🧩 Component Architecture
 
 ### Core Components (7)
+
 ```
 Button
 ├── Variants: solid, outline, soft, ghost, link
@@ -187,6 +201,7 @@ Skeleton
 ```
 
 ### Component Variants
+
 ```
 Total Combinations: 100+
 
@@ -206,19 +221,13 @@ Skeleton: 3 (variants)
 ### Quick Start
 
 #### 1. Import Components
+
 ```typescript
-import {
-  Button,
-  Badge,
-  Card,
-  Input,
-  Alert,
-  Divider,
-  Skeleton
-} from '@/components/ui';
+import { Button, Badge, Card, Input, Alert, Divider, Skeleton } from '@/components/ui';
 ```
 
 #### 2. Use Basic Component
+
 ```typescript
 <Button variant="solid" size="md" color="primary">
   Click me
@@ -226,6 +235,7 @@ import {
 ```
 
 #### 3. Combine Components
+
 ```typescript
 <Card hover>
   <Badge variant="accent">Featured</Badge>
@@ -236,6 +246,7 @@ import {
 ```
 
 #### 4. Build Forms
+
 ```typescript
 <form className="space-y-6 max-w-md">
   <Input label="Email" type="email" required />
@@ -310,6 +321,7 @@ qa-paas-web/
 ## 🎯 Common Tasks
 
 ### Task: Build a Feature Card
+
 **Where to look**: COMPONENT_LIBRARY.md → Card Section → Real-world Examples
 
 ```typescript
@@ -323,6 +335,7 @@ qa-paas-web/
 ```
 
 ### Task: Create a Form with Validation
+
 **Where to look**: COMPONENT_LIBRARY.md → Input Section + Alert Section + Composition Patterns
 
 ```typescript
@@ -335,6 +348,7 @@ qa-paas-web/
 ```
 
 ### Task: Choose a Color Token
+
 **Where to look**: DESIGN_TOKENS_REFERENCE.md → Color Usage Guide
 
 - **Primary (Cyan)**: CTAs, links, active states
@@ -346,6 +360,7 @@ qa-paas-web/
 - **Neutral (Slate)**: Backgrounds, borders, text
 
 ### Task: Find Font Sizes
+
 **Where to look**: DESIGN_TOKENS_REFERENCE.md → Typography Section
 
 ```typescript
@@ -362,6 +377,7 @@ qa-paas-web/
 ```
 
 ### Task: Add Spacing
+
 **Where to look**: DESIGN_TOKENS_REFERENCE.md → Spacing Scale
 
 ```typescript
@@ -383,6 +399,7 @@ qa-paas-web/
 ```
 
 ### Task: Apply Animations
+
 **Where to look**: DESIGN_TOKENS_REFERENCE.md → Animations Section + DESIGN_SYSTEM.md → Animations
 
 ```typescript
@@ -436,6 +453,7 @@ qa-paas-web/
 ## 📞 Quick Reference Links
 
 ### By Task
+
 - **Building buttons**: COMPONENT_LIBRARY.md → Button Section
 - **Creating forms**: COMPONENT_LIBRARY.md → Composition Patterns
 - **Color selection**: DESIGN_TOKENS_REFERENCE.md → Color Usage Guide
@@ -444,6 +462,7 @@ qa-paas-web/
 - **Learning system**: DESIGN_SYSTEM.md → All sections
 
 ### By Component
+
 - **Button**: COMPONENT_LIBRARY.md (100+ lines)
 - **Badge**: COMPONENT_LIBRARY.md (80+ lines)
 - **Card**: COMPONENT_LIBRARY.md (100+ lines)
@@ -453,6 +472,7 @@ qa-paas-web/
 - **Skeleton**: COMPONENT_LIBRARY.md (40+ lines)
 
 ### By Token Type
+
 - **Colors**: DESIGN_TOKENS_REFERENCE.md → Color Tokens
 - **Typography**: DESIGN_TOKENS_REFERENCE.md → Typography
 - **Spacing**: DESIGN_TOKENS_REFERENCE.md → Spacing
@@ -463,21 +483,21 @@ qa-paas-web/
 
 ## 📊 Statistics
 
-| Metric | Count |
-|--------|-------|
-| Color Palettes | 11 |
-| Total Colors | 143 |
-| Font Sizes | 30+ |
-| Spacing Increments | 12 |
-| Border Radius Options | 6 |
-| Shadow Presets | 15+ |
-| Animation Keyframes | 10+ |
-| Core Components | 7 |
-| Component Variants | 100+ |
-| Documentation Pages | 4 |
-| Documentation Lines | 1,600+ |
-| Design System Code | 2,000+ |
-| Total Lines | 3,600+ |
+| Metric                | Count  |
+| --------------------- | ------ |
+| Color Palettes        | 11     |
+| Total Colors          | 143    |
+| Font Sizes            | 30+    |
+| Spacing Increments    | 12     |
+| Border Radius Options | 6      |
+| Shadow Presets        | 15+    |
+| Animation Keyframes   | 10+    |
+| Core Components       | 7      |
+| Component Variants    | 100+   |
+| Documentation Pages   | 4      |
+| Documentation Lines   | 1,600+ |
+| Design System Code    | 2,000+ |
+| Total Lines           | 3,600+ |
 
 ---
 
@@ -497,12 +517,14 @@ qa-paas-web/
 ## 🎓 Learning Path
 
 ### Beginner (1-2 hours)
+
 1. Read DESIGN_SYSTEM.md intro section
 2. Review DESIGN_SYSTEM_SETUP.md
 3. Try basic component examples
 4. Build a simple card with button
 
 ### Intermediate (3-4 hours)
+
 1. Read full DESIGN_SYSTEM.md
 2. Study COMPONENT_LIBRARY.md
 3. Build a form with validation
@@ -510,6 +532,7 @@ qa-paas-web/
 5. Apply animations
 
 ### Advanced (5+ hours)
+
 1. Customize components for specific needs
 2. Create composite components
 3. Build complex page layouts
@@ -536,4 +559,3 @@ qa-paas-web/
 **Need quick lookup** → Use DESIGN_TOKENS_REFERENCE.md
 **Building components** → Check COMPONENT_LIBRARY.md
 **Getting started** → See DESIGN_SYSTEM_SETUP.md
-

@@ -2,11 +2,23 @@ import type { Metadata } from 'next';
 import Script from 'next/script';
 import { Navigation, Footer } from '@/components/branding';
 import { MarketplaceHero } from '@/components/marketplace';
-import { Card, Button, Badge, Alert } from '@/components/ui';
+import { Card, Badge, Alert, InteractiveButton } from '@/components/ui';
 import {
-  CheckCircle2, Lock, Zap, CreditCard, BookOpen,
-  Settings, Play, BarChart3, Shield, Gauge, ArrowRight,
-  Code2, Users, Cpu, CloudOff
+  CheckCircle2,
+  Lock,
+  Zap,
+  CreditCard,
+  Settings,
+  Play,
+  BarChart3,
+  Shield,
+  Gauge,
+  ArrowRight,
+  Code2,
+  Users,
+  Cpu,
+  CloudOff,
+  Globe2,
 } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -62,7 +74,8 @@ const PROCUREMENT_STEPS = [
   {
     icon: Zap,
     title: 'Step 4: Deploy & Execute',
-    description: 'Launch your first test job and monitor execution through live telemetry dashboards.',
+    description:
+      'Launch your first test job and monitor execution through live telemetry dashboards.',
     details: 'Support team available 24/7 for any integration issues.',
   },
 ];
@@ -72,25 +85,25 @@ const COMPLIANCE_BADGES = [
     icon: Shield,
     label: 'ISO/IEC 27001:2022',
     description: 'Information Security Management System certified',
-    badge: 'Security'
+    badge: 'Security',
   },
   {
     icon: CheckCircle2,
     label: 'SOC2 Type II',
     description: 'Security, Availability, Confidentiality & Privacy audited',
-    badge: 'Audit'
+    badge: 'Audit',
   },
   {
     icon: Globe2,
     label: 'GDPR Compliant',
     description: 'EU Data Protection Regulation fully implemented',
-    badge: 'Privacy'
+    badge: 'Privacy',
   },
   {
     icon: Cpu,
     label: 'Cloud Native',
     description: 'CNCF-certified architecture and deployment patterns',
-    badge: 'Tech'
+    badge: 'Tech',
   },
 ];
 
@@ -198,7 +211,8 @@ export default function MarketplacesPage() {
             <div className="ml-2 flex-1">
               <p className="font-semibold text-primary mb-1">Ready to Get Started?</p>
               <p className="text-sm text-slate-300">
-                Click on any marketplace below to view pricing, initiate your subscription, and begin deploying QA-PaaS in minutes.
+                Click on any marketplace below to view pricing, initiate your subscription, and
+                begin deploying QA-PaaS in minutes.
               </p>
             </div>
           </Alert>
@@ -296,18 +310,20 @@ export default function MarketplacesPage() {
                   </div>
                 </div>
 
-                <Button
+                <InteractiveButton
                   variant="primary"
                   size="lg"
                   className="w-full mt-4"
-                  onClick={() => {
-                    if (idx === 0) window.open('https://aws.amazon.com/marketplace/pp/prodview-qapaas', '_blank');
-                    else if (idx === 1) window.open('https://marketplace.visualstudio.com/items?itemName=qualityimpact.qa-paas', '_blank');
-                    else window.open('https://console.cloud.google.com/marketplace/product/qualityimpact/qa-paas', '_blank');
-                  }}
+                  href={
+                    idx === 0
+                      ? 'https://aws.amazon.com/marketplace/pp/prodview-qapaas'
+                      : idx === 1
+                        ? 'https://marketplace.visualstudio.com/items?itemName=qualityimpact.qa-paas'
+                        : 'https://console.cloud.google.com/marketplace/product/qualityimpact/qa-paas'
+                  }
                 >
                   Access Marketplace
-                </Button>
+                </InteractiveButton>
               </Card>
             ))}
           </div>
@@ -354,13 +370,18 @@ export default function MarketplacesPage() {
             {COMPLIANCE_BADGES.map((badge, idx) => {
               const BadgeIcon = badge.icon;
               return (
-                <Card key={idx} className="space-y-4 border-primary/20 hover:border-primary/40 transition-colors">
+                <Card
+                  key={idx}
+                  className="space-y-4 border-primary/20 hover:border-primary/40 transition-colors"
+                >
                   <div className="flex items-start gap-4">
                     <BadgeIcon className="w-8 h-8 text-primary flex-shrink-0 mt-1" />
                     <div className="flex-grow">
                       <div className="flex items-center justify-between mb-2">
                         <h3 className="font-semibold text-slate-100">{badge.label}</h3>
-                        <Badge variant="info" className="text-xs">{badge.badge}</Badge>
+                        <Badge variant="info" className="text-xs">
+                          {badge.badge}
+                        </Badge>
                       </div>
                       <p className="text-sm text-slate-400">{badge.description}</p>
                     </div>
@@ -431,33 +452,36 @@ export default function MarketplacesPage() {
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <Button
+            <InteractiveButton
               variant="primary"
               size="lg"
-              onClick={() => window.open('https://aws.amazon.com/marketplace/pp/prodview-qapaas', '_blank')}
+              href="https://aws.amazon.com/marketplace/pp/prodview-qapaas"
             >
               AWS Marketplace
-            </Button>
-            <Button
+            </InteractiveButton>
+            <InteractiveButton
               variant="primary"
               size="lg"
-              onClick={() => window.open('https://marketplace.visualstudio.com/items?itemName=qualityimpact.qa-paas', '_blank')}
+              href="https://marketplace.visualstudio.com/items?itemName=qualityimpact.qa-paas"
             >
               Azure DevOps
-            </Button>
-            <Button
+            </InteractiveButton>
+            <InteractiveButton
               variant="primary"
               size="lg"
-              onClick={() => window.open('https://console.cloud.google.com/marketplace/product/qualityimpact/qa-paas', '_blank')}
+              href="https://console.cloud.google.com/marketplace/product/qualityimpact/qa-paas"
             >
               Google Cloud
-            </Button>
+            </InteractiveButton>
           </div>
 
           <div className="border-t border-slate-600 pt-8 text-sm text-slate-400">
             <p>
               Need help deciding? Contact our sales team:{' '}
-              <a href="mailto:sales@qa-paas.com" className="text-primary hover:underline font-semibold">
+              <a
+                href="mailto:sales@qa-paas.com"
+                className="text-primary hover:underline font-semibold"
+              >
                 sales@qa-paas.com
               </a>
             </p>
@@ -469,6 +493,3 @@ export default function MarketplacesPage() {
     </>
   );
 }
-
-// Add missing imports
-import { Globe2 } from 'lucide-react';

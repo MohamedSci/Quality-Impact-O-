@@ -1,10 +1,18 @@
 import type { Metadata } from 'next';
 import Script from 'next/script';
 import { Navigation, Footer } from '@/components/branding';
-import { Card, Button, Badge } from '@/components/ui';
+import { Card, InteractiveButton, Badge } from '@/components/ui';
 import {
-  GitBranch, Zap, Shield, Target, AlertCircle, BarChart3,
-  Code2, Eye, Zap as ZapIcon, Lock, TrendingUp, ArrowRight
+  GitBranch,
+  Zap,
+  Shield,
+  Target,
+  AlertCircle,
+  Code2,
+  TrendingUp,
+  CheckCircle2,
+  BarChart3,
+  ArrowRight,
 } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -42,8 +50,14 @@ const ENGINES = [
   {
     icon: GitBranch,
     title: 'End-to-End (E2E) Testing',
-    description: 'Browser automation across Chrome, Firefox, Safari, and Edge with visual regression detection.',
-    features: ['Cross-browser support', 'Visual regression', 'Mobile testing', 'Parallel execution'],
+    description:
+      'Browser automation across Chrome, Firefox, Safari, and Edge with visual regression detection.',
+    features: [
+      'Cross-browser support',
+      'Visual regression',
+      'Mobile testing',
+      'Parallel execution',
+    ],
     badge: 'Browser',
     metrics: { tests: '1000+', coverage: '95%+' },
     useCases: ['UI regression detection', 'User journey validation', 'Cross-device testing'],
@@ -51,7 +65,8 @@ const ENGINES = [
   {
     icon: Zap,
     title: 'API & Integration Testing',
-    description: 'RESTful, GraphQL, and gRPC protocol testing with request/response validation and performance profiling.',
+    description:
+      'RESTful, GraphQL, and gRPC protocol testing with request/response validation and performance profiling.',
     features: ['Protocol support', 'Schema validation', 'Performance metrics', 'Load testing'],
     badge: 'Protocols',
     metrics: { endpoints: '500+', throughput: '100K req/s' },
@@ -60,7 +75,8 @@ const ENGINES = [
   {
     icon: Shield,
     title: 'Security Scanning',
-    description: 'OWASP Top 10 vulnerability scanning, dependency analysis, and container image introspection.',
+    description:
+      'OWASP Top 10 vulnerability scanning, dependency analysis, and container image introspection.',
     features: ['OWASP compliance', 'Dependency audit', 'Container scanning', 'CVE tracking'],
     badge: 'Security',
     metrics: { vulnerabilities: 'Detected', cves: 'Tracked' },
@@ -69,8 +85,14 @@ const ENGINES = [
   {
     icon: Target,
     title: 'AI Test Triage',
-    description: 'Machine learning-powered flakiness detection, root cause analysis, and intelligent test recommendations.',
-    features: ['Flakiness detection', 'Root cause analysis', 'Test optimization', 'Failure prediction'],
+    description:
+      'Machine learning-powered flakiness detection, root cause analysis, and intelligent test recommendations.',
+    features: [
+      'Flakiness detection',
+      'Root cause analysis',
+      'Test optimization',
+      'Failure prediction',
+    ],
     badge: 'AI-Powered',
     metrics: { accuracy: '99.2%', analysis: 'Real-time' },
     useCases: ['Flaky test elimination', 'Failure prediction', 'Test optimization'],
@@ -78,7 +100,8 @@ const ENGINES = [
   {
     icon: AlertCircle,
     title: 'Live Telemetry Console',
-    description: 'Real-time test execution streams, logs, metrics, and incident correlation dashboards.',
+    description:
+      'Real-time test execution streams, logs, metrics, and incident correlation dashboards.',
     features: ['Live streaming', 'Log aggregation', 'Metrics export', 'Alert routing'],
     badge: 'Real-time',
     metrics: { latency: '< 100ms', streams: '10K+' },
@@ -167,7 +190,8 @@ export default function EnginesPage() {
               QA Engines: Complete Test Coverage
             </h1>
             <p className="text-xl text-slate-400 max-w-3xl mx-auto">
-              A comprehensive suite of six specialized testing engines designed for modern software delivery pipelines. Deploy once, test everything.
+              A comprehensive suite of six specialized testing engines designed for modern software
+              delivery pipelines. Deploy once, test everything.
             </p>
           </div>
         </div>
@@ -324,38 +348,34 @@ export default function EnginesPage() {
               Integrate Engines Into Your Pipeline
             </h2>
             <p className="text-lg text-slate-400">
-              Each engine is available standalone or as part of your comprehensive QA-PaaS subscription. Deploy immediately with zero setup overhead.
+              Each engine is available standalone or as part of your comprehensive QA-PaaS
+              subscription. Deploy immediately with zero setup overhead.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <Button
-              variant="primary"
-              size="lg"
-              className="w-full"
-              onClick={() => window.location.href = '/marketplaces'}
-            >
+            <InteractiveButton variant="primary" size="lg" className="w-full" href="/marketplaces">
               <span className="flex items-center justify-center gap-2">
                 View Marketplace Options
                 <ArrowRight className="w-4 h-4" />
               </span>
-            </Button>
-            <Button
+            </InteractiveButton>
+            <InteractiveButton
               variant="secondary"
               size="lg"
               className="w-full"
-              onClick={() => (window.location.href = 'mailto:sales@qa-paas.com')}
+              href="mailto:sales@qa-paas.com"
             >
               Request Demo
-            </Button>
-            <Button
+            </InteractiveButton>
+            <InteractiveButton
               variant="ghost"
               size="lg"
               className="w-full"
-              onClick={() => (window.location.href = '/legal/company-info')}
+              href="/legal/company-info"
             >
               Learn About QA-PaaS
-            </Button>
+            </InteractiveButton>
           </div>
 
           <div className="text-center text-sm text-slate-400 border-t border-slate-600 pt-8">
@@ -373,6 +393,3 @@ export default function EnginesPage() {
     </>
   );
 }
-
-// Add missing import
-import { CheckCircle2 } from 'lucide-react';

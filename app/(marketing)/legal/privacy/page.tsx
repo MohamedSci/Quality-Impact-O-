@@ -1,11 +1,22 @@
 import type { Metadata } from 'next';
 import Script from 'next/script';
 import { Navigation, Footer } from '@/components/branding';
-import { Card, Badge, Alert, Button } from '@/components/ui';
+import { Card, Badge, Alert, InteractiveButton } from '@/components/ui';
 import {
-  Lock, Eye, UserCheck, Database, AlertCircle, CheckCircle2,
-  Shield, TrendingUp, Code2, Gauge, Mail, ExternalLink,
-  Zap, BarChart3, Clock
+  Lock,
+  Eye,
+  UserCheck,
+  Database,
+  AlertCircle,
+  CheckCircle2,
+  Shield,
+  TrendingUp,
+  Code2,
+  Gauge,
+  Mail,
+  Zap,
+  BarChart3,
+  Clock,
 } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -72,7 +83,8 @@ export default function PrivacyPage() {
               Security & Privacy Policy
             </h1>
             <p className="text-xl text-slate-400 max-w-3xl mx-auto">
-              Comprehensive enterprise-grade data protection and compliance standards aligned with ISO 27001, SOC2 Type II, and GDPR.
+              Comprehensive enterprise-grade data protection and compliance standards aligned with
+              ISO 27001, SOC2 Type II, and GDPR.
             </p>
           </div>
         </div>
@@ -86,7 +98,8 @@ export default function PrivacyPage() {
             <div className="ml-3 flex-1">
               <p className="font-semibold text-status-pass mb-1">Security Certified</p>
               <p className="text-sm text-slate-300">
-                QA-PaaS is certified under ISO/IEC 27001:2022, SOC2 Type II, and GDPR compliant. All data is encrypted end-to-end with zero-knowledge architecture.
+                QA-PaaS is certified under ISO/IEC 27001:2022, SOC2 Type II, and GDPR compliant. All
+                data is encrypted end-to-end with zero-knowledge architecture.
               </p>
             </div>
           </Alert>
@@ -114,32 +127,38 @@ export default function PrivacyPage() {
               {
                 icon: Lock,
                 title: 'Encryption at Rest & Transit',
-                description: 'AES-256 encryption for data at rest, TLS 1.3 for all network traffic, end-to-end encryption protocols.',
+                description:
+                  'AES-256 encryption for data at rest, TLS 1.3 for all network traffic, end-to-end encryption protocols.',
               },
               {
                 icon: Eye,
                 title: 'Zero-Knowledge Access',
-                description: 'Customer data never accessible to Quality Impact OÜ personnel without explicit audit trail verification.',
+                description:
+                  'Customer data never accessible to Quality Impact OÜ personnel without explicit audit trail verification.',
               },
               {
                 icon: UserCheck,
                 title: 'Identity & Access Management',
-                description: 'OAuth 2.0 / OIDC integration with role-based access control (RBAC) and multi-factor authentication.',
+                description:
+                  'OAuth 2.0 / OIDC integration with role-based access control (RBAC) and multi-factor authentication.',
               },
               {
                 icon: Database,
                 title: 'Data Residency Control',
-                description: 'Choose storage regions across AWS, Azure, and GCP for data sovereignty and compliance requirements.',
+                description:
+                  'Choose storage regions across AWS, Azure, and GCP for data sovereignty and compliance requirements.',
               },
               {
                 icon: AlertCircle,
                 title: 'Audit Logging',
-                description: 'Comprehensive audit trails for all API calls, configuration changes, and data access events.',
+                description:
+                  'Comprehensive audit trails for all API calls, configuration changes, and data access events.',
               },
               {
                 icon: Clock,
                 title: 'Incident Response',
-                description: '24/7 security monitoring with documented incident response and recovery procedures.',
+                description:
+                  '24/7 security monitoring with documented incident response and recovery procedures.',
               },
             ].map((pillar, idx) => {
               const Icon = pillar.icon;
@@ -231,7 +250,9 @@ export default function PrivacyPage() {
               <Card key={idx} className="space-y-4">
                 <div className="flex items-center justify-between">
                   <h3 className="text-lg font-semibold text-primary">{cert.title}</h3>
-                  <Badge variant="success" className="text-xs">{cert.badge}</Badge>
+                  <Badge variant="success" className="text-xs">
+                    {cert.badge}
+                  </Badge>
                 </div>
                 <p className="text-sm text-slate-400">{cert.description}</p>
                 <div className="space-y-2 border-t border-slate-700 pt-4">
@@ -264,7 +285,9 @@ export default function PrivacyPage() {
                 <div className="flex items-start gap-3">
                   <Database className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
                   <div>
-                    <h3 className="text-xl font-semibold text-slate-100 mb-4">What Data We Collect</h3>
+                    <h3 className="text-xl font-semibold text-slate-100 mb-4">
+                      What Data We Collect
+                    </h3>
                     <ul className="space-y-3">
                       {[
                         'Test execution logs and telemetry data (per your configuration)',
@@ -288,7 +311,9 @@ export default function PrivacyPage() {
                 <div className="flex items-start gap-3">
                   <Lock className="w-6 h-6 text-status-pass flex-shrink-0 mt-1" />
                   <div>
-                    <h3 className="text-xl font-semibold text-slate-100 mb-4">How We Protect Your Data</h3>
+                    <h3 className="text-xl font-semibold text-slate-100 mb-4">
+                      How We Protect Your Data
+                    </h3>
                     <ul className="space-y-3">
                       {[
                         'All data encrypted at rest (AES-256) and in transit (TLS 1.3)',
@@ -312,7 +337,9 @@ export default function PrivacyPage() {
                 <div className="flex items-start gap-3">
                   <UserCheck className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
                   <div>
-                    <h3 className="text-xl font-semibold text-slate-100 mb-4">Your Privacy Rights (GDPR)</h3>
+                    <h3 className="text-xl font-semibold text-slate-100 mb-4">
+                      Your Privacy Rights (GDPR)
+                    </h3>
                     <p className="text-sm text-slate-400 mb-4">
                       Under GDPR and applicable privacy laws, you have the following rights:
                     </p>
@@ -340,13 +367,19 @@ export default function PrivacyPage() {
                 <div className="flex items-start gap-3">
                   <Mail className="w-6 h-6 text-accent-neural flex-shrink-0 mt-1" />
                   <div>
-                    <h3 className="text-lg font-semibold text-slate-100 mb-3">Contact Our Data Protection Officer</h3>
+                    <h3 className="text-lg font-semibold text-slate-100 mb-3">
+                      Contact Our Data Protection Officer
+                    </h3>
                     <p className="text-sm text-slate-400 mb-4">
                       For privacy concerns, data requests, or to exercise your GDPR rights:
                     </p>
                     <div className="bg-slate-bg p-4 rounded-lg border border-slate-700">
-                      <p className="font-mono text-sm text-accent-neural font-semibold">privacy@qa-paas.com</p>
-                      <p className="text-xs text-slate-500 mt-2">Response time: Within 24 business hours</p>
+                      <p className="font-mono text-sm text-accent-neural font-semibold">
+                        privacy@qa-paas.com
+                      </p>
+                      <p className="text-xs text-slate-500 mt-2">
+                        Response time: Within 24 business hours
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -373,7 +406,11 @@ export default function PrivacyPage() {
               {
                 phase: 'Detection',
                 time: '< 5 minutes',
-                details: ['Automated threat detection', 'Real-time anomaly monitoring', 'Security event correlation'],
+                details: [
+                  'Automated threat detection',
+                  'Real-time anomaly monitoring',
+                  'Security event correlation',
+                ],
               },
               {
                 phase: 'Response',
@@ -383,7 +420,11 @@ export default function PrivacyPage() {
               {
                 phase: 'Communication',
                 time: '< 2 hours',
-                details: ['Customer notification', 'Regulatory compliance', 'Transparent reporting'],
+                details: [
+                  'Customer notification',
+                  'Regulatory compliance',
+                  'Transparent reporting',
+                ],
               },
             ].map((item, idx) => (
               <Card key={idx} className="space-y-4">
@@ -423,22 +464,26 @@ export default function PrivacyPage() {
               {
                 icon: BarChart3,
                 title: 'Annual Security Audits',
-                description: 'Independent third-party audits of all security controls and compliance standards.',
+                description:
+                  'Independent third-party audits of all security controls and compliance standards.',
               },
               {
                 icon: Gauge,
                 title: 'Vulnerability Scanning',
-                description: 'Continuous automated scanning for security vulnerabilities and misconfigurations.',
+                description:
+                  'Continuous automated scanning for security vulnerabilities and misconfigurations.',
               },
               {
                 icon: TrendingUp,
                 title: 'Security Metrics',
-                description: 'Public transparency reports on security incidents, resolution time, and improvements.',
+                description:
+                  'Public transparency reports on security incidents, resolution time, and improvements.',
               },
               {
                 icon: Clock,
                 title: 'Regular Updates',
-                description: 'Quarterly security updates and patches with prioritized critical fixes.',
+                description:
+                  'Quarterly security updates and patches with prioritized critical fixes.',
               },
             ].map((item, idx) => {
               const Icon = item.icon;
@@ -465,26 +510,21 @@ export default function PrivacyPage() {
           </p>
 
           <div className="flex flex-col md:flex-row gap-4 justify-center">
-            <Button
-              variant="primary"
-              size="lg"
-              onClick={() => (window.location.href = 'mailto:privacy@qa-paas.com')}
-            >
+            <InteractiveButton variant="primary" size="lg" href="mailto:privacy@qa-paas.com">
               Contact DPO
-            </Button>
-            <Button
-              variant="secondary"
-              size="lg"
-              onClick={() => (window.location.href = 'mailto:legal@qa-paas.com')}
-            >
+            </InteractiveButton>
+            <InteractiveButton variant="secondary" size="lg" href="mailto:legal@qa-paas.com">
               Security Questions
-            </Button>
+            </InteractiveButton>
           </div>
 
           <div className="text-sm text-slate-400 border-t border-slate-600 pt-6">
             <p>
               For urgent security issues, email{' '}
-              <a href="mailto:security@qa-paas.com" className="text-primary hover:underline font-semibold">
+              <a
+                href="mailto:security@qa-paas.com"
+                className="text-primary hover:underline font-semibold"
+              >
                 security@qa-paas.com
               </a>
             </p>

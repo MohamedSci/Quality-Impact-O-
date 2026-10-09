@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Script from 'next/script';
-import { Sparkles, Terminal, CheckCircle2 } from 'lucide-react';
+import { Sparkles, CheckCircle2 } from 'lucide-react';
 import { CloudMarketplaceCard, type CloudMarketplaceOption } from './CloudMarketplaceCard';
 
 const MARKETPLACES: CloudMarketplaceOption[] = [
@@ -79,7 +79,9 @@ export const MarketplaceHero: React.FC = () => {
           </h1>
 
           <p className="text-lg text-slate-400 font-sans leading-relaxed">
-            Provision QA-PaaS directly through your existing AWS, Azure, or Google Cloud enterprise agreement. Unified billing, high-compute test execution, and zero infrastructure friction.
+            Provision QA-PaaS directly through your existing AWS, Azure, or Google Cloud enterprise
+            agreement. Unified billing, high-compute test execution, and zero infrastructure
+            friction.
           </p>
         </div>
 

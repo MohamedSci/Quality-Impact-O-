@@ -1,11 +1,10 @@
 import React from 'react';
 import clsx from 'clsx';
-import type { ButtonVariant, SizeVariant, ComponentBaseProps } from './types';
+import type { ButtonVariant, SizeVariant, ColorVariant, ComponentBaseProps } from './types';
 
-interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    ComponentBaseProps {
-  variant?: ButtonVariant;
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>, ComponentBaseProps {
+  variant?: ButtonVariant | 'primary' | 'secondary' | 'ghost';
+  color?: ColorVariant;
   size?: SizeVariant;
   isLoading?: boolean;
   isDisabled?: boolean;
@@ -51,34 +50,55 @@ const variantStyles = {
       'border-2 border-neutral-600 text-neutral-300 hover:bg-neutral-600/20 active:bg-neutral-600/40 disabled:border-neutral-700 disabled:text-neutral-600',
   },
   soft: {
-    primary: 'bg-primary-500/15 text-primary-300 hover:bg-primary-500/25 active:bg-primary-500/35 disabled:bg-neutral-700/20 disabled:text-neutral-600',
-    secondary: 'bg-neutral-700/40 text-neutral-200 hover:bg-neutral-700/60 active:bg-neutral-700/80 disabled:bg-neutral-800/20 disabled:text-neutral-600',
-    accent: 'bg-accent-500/15 text-accent-300 hover:bg-accent-500/25 active:bg-accent-500/35 disabled:bg-neutral-700/20 disabled:text-neutral-600',
-    success: 'bg-success-500/15 text-success-300 hover:bg-success-500/25 active:bg-success-500/35 disabled:bg-neutral-700/20 disabled:text-neutral-600',
-    error: 'bg-error-500/15 text-error-300 hover:bg-error-500/25 active:bg-error-500/35 disabled:bg-neutral-700/20 disabled:text-neutral-600',
-    warning: 'bg-warning-500/15 text-warning-600 hover:bg-warning-500/25 active:bg-warning-500/35 disabled:bg-neutral-700/20 disabled:text-neutral-600',
+    primary:
+      'bg-primary-500/15 text-primary-300 hover:bg-primary-500/25 active:bg-primary-500/35 disabled:bg-neutral-700/20 disabled:text-neutral-600',
+    secondary:
+      'bg-neutral-700/40 text-neutral-200 hover:bg-neutral-700/60 active:bg-neutral-700/80 disabled:bg-neutral-800/20 disabled:text-neutral-600',
+    accent:
+      'bg-accent-500/15 text-accent-300 hover:bg-accent-500/25 active:bg-accent-500/35 disabled:bg-neutral-700/20 disabled:text-neutral-600',
+    success:
+      'bg-success-500/15 text-success-300 hover:bg-success-500/25 active:bg-success-500/35 disabled:bg-neutral-700/20 disabled:text-neutral-600',
+    error:
+      'bg-error-500/15 text-error-300 hover:bg-error-500/25 active:bg-error-500/35 disabled:bg-neutral-700/20 disabled:text-neutral-600',
+    warning:
+      'bg-warning-500/15 text-warning-600 hover:bg-warning-500/25 active:bg-warning-500/35 disabled:bg-neutral-700/20 disabled:text-neutral-600',
     info: 'bg-info-500/15 text-info-300 hover:bg-info-500/25 active:bg-info-500/35 disabled:bg-neutral-700/20 disabled:text-neutral-600',
-    neutral: 'bg-neutral-700/30 text-neutral-300 hover:bg-neutral-700/50 active:bg-neutral-700/70 disabled:bg-neutral-800/20 disabled:text-neutral-600',
+    neutral:
+      'bg-neutral-700/30 text-neutral-300 hover:bg-neutral-700/50 active:bg-neutral-700/70 disabled:bg-neutral-800/20 disabled:text-neutral-600',
   },
   ghost: {
-    primary: 'text-primary-400 hover:text-primary-300 hover:bg-primary-500/10 active:bg-primary-500/20 disabled:text-neutral-600',
-    secondary: 'text-neutral-400 hover:text-neutral-300 hover:bg-neutral-700/30 active:bg-neutral-700/50 disabled:text-neutral-600',
-    accent: 'text-accent-400 hover:text-accent-300 hover:bg-accent-500/10 active:bg-accent-500/20 disabled:text-neutral-600',
-    success: 'text-success-400 hover:text-success-300 hover:bg-success-500/10 active:bg-success-500/20 disabled:text-neutral-600',
-    error: 'text-error-400 hover:text-error-300 hover:bg-error-500/10 active:bg-error-500/20 disabled:text-neutral-600',
-    warning: 'text-warning-400 hover:text-warning-300 hover:bg-warning-500/10 active:bg-warning-500/20 disabled:text-neutral-600',
+    primary:
+      'text-primary-400 hover:text-primary-300 hover:bg-primary-500/10 active:bg-primary-500/20 disabled:text-neutral-600',
+    secondary:
+      'text-neutral-400 hover:text-neutral-300 hover:bg-neutral-700/30 active:bg-neutral-700/50 disabled:text-neutral-600',
+    accent:
+      'text-accent-400 hover:text-accent-300 hover:bg-accent-500/10 active:bg-accent-500/20 disabled:text-neutral-600',
+    success:
+      'text-success-400 hover:text-success-300 hover:bg-success-500/10 active:bg-success-500/20 disabled:text-neutral-600',
+    error:
+      'text-error-400 hover:text-error-300 hover:bg-error-500/10 active:bg-error-500/20 disabled:text-neutral-600',
+    warning:
+      'text-warning-400 hover:text-warning-300 hover:bg-warning-500/10 active:bg-warning-500/20 disabled:text-neutral-600',
     info: 'text-info-400 hover:text-info-300 hover:bg-info-500/10 active:bg-info-500/20 disabled:text-neutral-600',
-    neutral: 'text-neutral-400 hover:text-neutral-300 hover:bg-neutral-700/20 active:bg-neutral-700/40 disabled:text-neutral-600',
+    neutral:
+      'text-neutral-400 hover:text-neutral-300 hover:bg-neutral-700/20 active:bg-neutral-700/40 disabled:text-neutral-600',
   },
   link: {
-    primary: 'text-primary-400 hover:text-primary-300 underline hover:underline-offset-2 disabled:text-neutral-600 no-underline hover:underline',
-    secondary: 'text-neutral-400 hover:text-neutral-300 underline hover:underline-offset-2 disabled:text-neutral-600 no-underline hover:underline',
-    accent: 'text-accent-400 hover:text-accent-300 underline hover:underline-offset-2 disabled:text-neutral-600 no-underline hover:underline',
-    success: 'text-success-400 hover:text-success-300 underline hover:underline-offset-2 disabled:text-neutral-600 no-underline hover:underline',
-    error: 'text-error-400 hover:text-error-300 underline hover:underline-offset-2 disabled:text-neutral-600 no-underline hover:underline',
-    warning: 'text-warning-400 hover:text-warning-300 underline hover:underline-offset-2 disabled:text-neutral-600 no-underline hover:underline',
+    primary:
+      'text-primary-400 hover:text-primary-300 underline hover:underline-offset-2 disabled:text-neutral-600 no-underline hover:underline',
+    secondary:
+      'text-neutral-400 hover:text-neutral-300 underline hover:underline-offset-2 disabled:text-neutral-600 no-underline hover:underline',
+    accent:
+      'text-accent-400 hover:text-accent-300 underline hover:underline-offset-2 disabled:text-neutral-600 no-underline hover:underline',
+    success:
+      'text-success-400 hover:text-success-300 underline hover:underline-offset-2 disabled:text-neutral-600 no-underline hover:underline',
+    error:
+      'text-error-400 hover:text-error-300 underline hover:underline-offset-2 disabled:text-neutral-600 no-underline hover:underline',
+    warning:
+      'text-warning-400 hover:text-warning-300 underline hover:underline-offset-2 disabled:text-neutral-600 no-underline hover:underline',
     info: 'text-info-400 hover:text-info-300 underline hover:underline-offset-2 disabled:text-neutral-600 no-underline hover:underline',
-    neutral: 'text-neutral-400 hover:text-neutral-300 underline hover:underline-offset-2 disabled:text-neutral-600 no-underline hover:underline',
+    neutral:
+      'text-neutral-400 hover:text-neutral-300 underline hover:underline-offset-2 disabled:text-neutral-600 no-underline hover:underline',
   },
 };
 
@@ -107,8 +127,18 @@ export const Button: React.FC<ButtonProps> = ({
   const baseStyles =
     'inline-flex items-center justify-center gap-2 rounded-lg transition-all duration-150 focus-ring disabled:cursor-not-allowed';
 
-  const variantColor = (variant as keyof typeof variantStyles)['primary'] ? 'primary' : 'primary';
-  const variantClasses = variantStyles[variant]?.[variantColor] || variantStyles.solid.primary;
+  // Map simple variant names to primary color
+  const colorVariant =
+    variant === 'primary' ? 'primary' : variant === 'secondary' ? 'secondary' : 'primary';
+  const variantType =
+    variant === 'primary' || variant === 'secondary'
+      ? 'solid'
+      : (variant as keyof typeof variantStyles);
+
+  const variantClasses =
+    variantStyles[variantType]?.[
+      colorVariant as keyof (typeof variantStyles)[keyof typeof variantStyles]
+    ] || variantStyles.solid.primary;
 
   return (
     <button
@@ -149,11 +179,15 @@ export const Button: React.FC<ButtonProps> = ({
         </svg>
       )}
 
-      {icon && iconPosition === 'left' && !isLoading && <span className="flex-shrink-0">{icon}</span>}
+      {icon && iconPosition === 'left' && !isLoading && (
+        <span className="flex-shrink-0">{icon}</span>
+      )}
 
       <span>{children}</span>
 
-      {icon && iconPosition === 'right' && !isLoading && <span className="flex-shrink-0">{icon}</span>}
+      {icon && iconPosition === 'right' && !isLoading && (
+        <span className="flex-shrink-0">{icon}</span>
+      )}
     </button>
   );
 };

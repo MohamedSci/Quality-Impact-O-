@@ -1,18 +1,26 @@
-'use client';
-
 import type { Metadata } from 'next';
 import Script from 'next/script';
 import { Navigation, Footer } from '@/components/branding';
-import { MarketplaceHero } from '@/components/marketplace';
-import { Card, Button, Badge } from '@/components/ui';
+import { MarketplaceHero, MarketplaceLinks } from '@/components/marketplace';
+import { Card, Badge } from '@/components/ui';
 import {
-  Zap, Shield, TrendingUp, Cloud, Cpu, CheckCircle2,
-  BarChart3, Lock, Zap as ZapIcon, Globe2, ArrowRight,
-  Code2, Database, Monitor, Users, Gauge, GitBranch
+  Zap,
+  Shield,
+  TrendingUp,
+  Cloud,
+  Cpu,
+  CheckCircle2,
+  Globe2,
+  Lock,
+  Database,
+  Monitor,
+  Users,
+  Gauge,
+  GitBranch,
 } from 'lucide-react';
 
 // Server-side metadata
-export const metadata = {
+export const metadata: Metadata = {
   title: 'QA-PaaS - Enterprise Cloud Testing Platform',
   description:
     'AI-orchestrated software testing platform by Quality Impact OÜ. Available on AWS Marketplace, Azure DevOps, and Google Cloud. ISO 27001 & SOC2 compliant.',
@@ -57,7 +65,8 @@ const CORE_FEATURES = [
   {
     icon: Zap,
     title: 'Lightning-Fast Execution',
-    description: 'Parallel test execution across high-compute cloud runners with sub-second latency.',
+    description:
+      'Parallel test execution across high-compute cloud runners with sub-second latency.',
     badge: 'Performance',
     badgeVariant: 'success' as const,
   },
@@ -71,7 +80,8 @@ const CORE_FEATURES = [
   {
     icon: TrendingUp,
     title: 'AI-Powered Insights',
-    description: 'Machine learning-driven test triage, flakiness detection, and intelligent retry logic.',
+    description:
+      'Machine learning-driven test triage, flakiness detection, and intelligent retry logic.',
     badge: 'AI-Driven',
     badgeVariant: 'default' as const,
   },
@@ -148,7 +158,7 @@ const BENEFITS = [
   },
 ];
 
-function HomePage() {
+export default function HomePage() {
   const homepageSchema = {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
@@ -198,18 +208,19 @@ function HomePage() {
       <MarketplaceHero />
 
       {/* Core Features Section */}
-      <section className="section-padding bg-slate-bg">
-        <div className="container-max space-y-12">
+      <section className="py-16 px-6 md:px-12 bg-slate-900">
+        <div className="max-w-7xl mx-auto space-y-12">
           <div className="max-w-3xl mx-auto text-center space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20">
-              <Gauge className="w-4 h-4 text-primary" />
-              <span className="text-sm font-semibold text-primary">Enterprise-Grade Platform</span>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20">
+              <Gauge className="w-4 h-4 text-cyan-400" />
+              <span className="text-sm font-semibold text-cyan-400">Enterprise-Grade Platform</span>
             </div>
             <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-slate-100">
               Purpose-Built for Enterprise QA Teams
             </h2>
             <p className="text-lg text-slate-400 max-w-2xl">
-              QA-PaaS combines advanced test orchestration, AI-powered insights, and seamless cloud integration to accelerate software delivery. Deploy once, manage globally.
+              QA-PaaS combines advanced test orchestration, AI-powered insights, and seamless cloud
+              integration to accelerate software delivery. Deploy once, manage globally.
             </p>
           </div>
 
@@ -219,8 +230,8 @@ function HomePage() {
               return (
                 <Card key={idx} hover className="space-y-4 group">
                   <div className="flex items-start justify-between">
-                    <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                      <Icon className="w-6 h-6 text-primary" />
+                    <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-cyan-500/10 group-hover:bg-cyan-500/20 transition-colors">
+                      <Icon className="w-6 h-6 text-cyan-400" />
                     </div>
                     <Badge variant={feature.badgeVariant} className="text-xs">
                       {feature.badge}
@@ -236,8 +247,8 @@ function HomePage() {
       </section>
 
       {/* Use Cases Section */}
-      <section className="section-padding bg-slate-surface">
-        <div className="container-max space-y-12">
+      <section className="py-16 px-6 md:px-12 bg-slate-800">
+        <div className="max-w-7xl mx-auto space-y-12">
           <div className="max-w-3xl mx-auto text-center space-y-4">
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-100">
               Built for Your Workflow
@@ -251,10 +262,13 @@ function HomePage() {
             {USE_CASES.map((useCase, idx) => {
               const Icon = useCase.icon;
               return (
-                <Card key={idx} className="space-y-4 border-slate-600 hover:border-primary/50 transition-colors">
+                <Card
+                  key={idx}
+                  className="space-y-4 border-slate-700 hover:border-cyan-500/50 transition-colors"
+                >
                   <div className="flex items-start justify-between">
-                    <Icon className="w-8 h-8 text-primary" />
-                    <span className="text-sm font-mono font-semibold text-primary bg-primary/10 px-2 py-1 rounded">
+                    <Icon className="w-8 h-8 text-cyan-400" />
+                    <span className="text-sm font-mono font-semibold text-cyan-400 bg-cyan-500/10 px-2 py-1 rounded">
                       {useCase.metrics}
                     </span>
                   </div>
@@ -270,8 +284,8 @@ function HomePage() {
       </section>
 
       {/* Benefits Section */}
-      <section className="section-padding bg-slate-bg">
-        <div className="container-max space-y-12">
+      <section className="py-16 px-6 md:px-12 bg-slate-900">
+        <div className="max-w-7xl mx-auto space-y-12">
           <div className="max-w-3xl mx-auto text-center space-y-4">
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-100">
               Proven Results Across Enterprises
@@ -284,7 +298,7 @@ function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {BENEFITS.map((benefit, idx) => (
               <Card key={idx} className="space-y-2 text-center">
-                <div className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent-neural">
+                <div className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-indigo-500">
                   {benefit.metric}
                 </div>
                 <h3 className="text-lg font-semibold text-slate-100">{benefit.label}</h3>
@@ -296,14 +310,15 @@ function HomePage() {
       </section>
 
       {/* Integration Section */}
-      <section className="section-padding bg-slate-surface">
-        <div className="container-max space-y-12">
+      <section className="py-16 px-6 md:px-12 bg-slate-800">
+        <div className="max-w-7xl mx-auto space-y-12">
           <div className="max-w-3xl mx-auto text-center space-y-4">
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-100">
               Enterprise Integration Made Simple
             </h2>
             <p className="text-lg text-slate-400">
-              Deploy QA-PaaS through your preferred cloud marketplace with zero infrastructure overhead.
+              Deploy QA-PaaS through your preferred cloud marketplace with zero infrastructure
+              overhead.
             </p>
           </div>
 
@@ -335,7 +350,7 @@ function HomePage() {
                 <div className="pt-4 border-t border-slate-600 space-y-2">
                   {cloud.features.map((feature, fIdx) => (
                     <div key={fIdx} className="flex items-center gap-2 text-sm text-slate-300">
-                      <CheckCircle2 className="w-4 h-4 text-status-pass" />
+                      <CheckCircle2 className="w-4 h-4 text-green-500" />
                       {feature}
                     </div>
                   ))}
@@ -347,8 +362,8 @@ function HomePage() {
       </section>
 
       {/* Security & Compliance Banner */}
-      <section className="section-padding bg-gradient-to-r from-slate-surface to-slate-bg border-y border-slate-600">
-        <div className="container-max">
+      <section className="py-16 px-6 md:px-12 bg-gradient-to-r from-slate-800 to-slate-900 border-y border-slate-700">
+        <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {[
               { icon: Lock, label: 'ISO 27001 Certified', sublabel: 'Information Security' },
@@ -359,7 +374,7 @@ function HomePage() {
               const Icon = item.icon;
               return (
                 <div key={idx} className="flex items-center gap-4">
-                  <Icon className="w-8 h-8 text-primary flex-shrink-0" />
+                  <Icon className="w-8 h-8 text-cyan-400 flex-shrink-0" />
                   <div>
                     <p className="text-sm font-semibold text-slate-100">{item.label}</p>
                     <p className="text-xs text-slate-400">{item.sublabel}</p>
@@ -372,69 +387,24 @@ function HomePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="section-padding bg-slate-bg">
-        <div className="container-max max-w-3xl mx-auto space-y-8">
+      <section className="py-16 px-6 md:px-12 bg-slate-900">
+        <div className="max-w-7xl mx-auto max-w-3xl space-y-8">
           <div className="text-center space-y-4">
             <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-slate-100">
               Start Testing at Enterprise Scale
             </h2>
             <p className="text-lg text-slate-400">
-              Subscribe to QA-PaaS through your preferred cloud marketplace. Enterprise procurement teams, volume discounts, and dedicated support available.
+              Subscribe to QA-PaaS through your preferred cloud marketplace. Enterprise procurement
+              teams, volume discounts, and dedicated support available.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <Button
-              variant="primary"
-              size="lg"
-              className="w-full"
-              onClick={() =>
-                window.open('https://aws.amazon.com/marketplace/pp/prodview-qapaas', '_blank')
-              }
-            >
-              <span className="flex items-center justify-center gap-2">
-                AWS Marketplace
-                <ArrowRight className="w-4 h-4" />
-              </span>
-            </Button>
-            <Button
-              variant="secondary"
-              size="lg"
-              className="w-full"
-              onClick={() =>
-                window.open(
-                  'https://marketplace.visualstudio.com/items?itemName=qualityimpact.qa-paas',
-                  '_blank'
-                )
-              }
-            >
-              <span className="flex items-center justify-center gap-2">
-                Azure DevOps
-                <ArrowRight className="w-4 h-4" />
-              </span>
-            </Button>
-            <Button
-              variant="ghost"
-              size="lg"
-              className="w-full"
-              onClick={() =>
-                window.open(
-                  'https://console.cloud.google.com/marketplace/product/qualityimpact/qa-paas',
-                  '_blank'
-                )
-              }
-            >
-              <span className="flex items-center justify-center gap-2">
-                Google Cloud
-                <ArrowRight className="w-4 h-4" />
-              </span>
-            </Button>
-          </div>
+          <MarketplaceLinks layout="grid" size="lg" />
 
-          <div className="text-center text-sm text-slate-400 border-t border-slate-600 pt-8">
+          <div className="text-center text-sm text-slate-400 border-t border-slate-700 pt-8">
             <p>
               Questions? Contact our sales team at{' '}
-              <a href="mailto:sales@qa-paas.com" className="text-primary hover:underline">
+              <a href="mailto:sales@qa-paas.com" className="text-cyan-400 hover:underline">
                 sales@qa-paas.com
               </a>
             </p>
@@ -446,5 +416,3 @@ function HomePage() {
     </>
   );
 }
-
-export default HomePage;

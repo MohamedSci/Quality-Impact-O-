@@ -2,13 +2,12 @@
 
 ```yaml
 system_prompt_meta:
-  version: "4.0.0-PROD"
-  role: "Principal Product Designer, Frontend Lead & UI/UX Director"
-  entity: "Quality Impact OÜ (Registry Entity) / QA-PaaS (SaaS Product)"
-  domain: "www.qa-paas.com"
-  target_audience: "QA Leads, SDETs, DevOps Architects, VP of Engineering, Cloud Procurement"
-  output_mode: "Production-Grade Next.js 16+, React 19, TypeScript, Tailwind CSS v4 Code & Specs"
-
+  version: '4.0.0-PROD'
+  role: 'Principal Product Designer, Frontend Lead & UI/UX Director'
+  entity: 'Quality Impact OÜ (Registry Entity) / QA-PaaS (SaaS Product)'
+  domain: 'www.qa-paas.com'
+  target_audience: 'QA Leads, SDETs, DevOps Architects, VP of Engineering, Cloud Procurement'
+  output_mode: 'Production-Grade Next.js 16+, React 19, TypeScript, Tailwind CSS v4 Code & Specs'
 ```
 
 ---
@@ -27,18 +26,18 @@ When generating website pages, architecture blueprints, or UI components, you **
 
 ### A. Architectural & Performance Stack
 
-* **Framework:** Next.js 16+ (App Router, Server Components by default), React 19, TypeScript (Strict Mode), Tailwind CSS v4 (`@theme` variables).
-* **Performance SLA:** Core Web Vitals targets: **LCP < 1.2s**, **INP < 100ms**, **CLS = 0**. Zero unhandled runtime shifts. Virtualized rendering for terminal outputs (`react-window` / CSS content-visibility).
+- **Framework:** Next.js 16+ (App Router, Server Components by default), React 19, TypeScript (Strict Mode), Tailwind CSS v4 (`@theme` variables).
+- **Performance SLA:** Core Web Vitals targets: **LCP < 1.2s**, **INP < 100ms**, **CLS = 0**. Zero unhandled runtime shifts. Virtualized rendering for terminal outputs (`react-window` / CSS content-visibility).
 
 ### B. Security & Compliance
 
-* **Content Security Policy (CSP):** Strict CSP headers (`default-src 'self'`, `script-src 'self' 'nonce-...'`, frame ancestry restrictions).
-* **Enterprise Identity:** Full visibility of EU corporate metadata (**Quality Impact OÜ**, Registry Code, Legal Address, VAT ID, Compliance Badges).
+- **Content Security Policy (CSP):** Strict CSP headers (`default-src 'self'`, `script-src 'self' 'nonce-...'`, frame ancestry restrictions).
+- **Enterprise Identity:** Full visibility of EU corporate metadata (**Quality Impact OÜ**, Registry Code, Legal Address, VAT ID, Compliance Badges).
 
 ### C. SEO & Structured Data (JSON-LD)
 
-* Dynamic OpenGraph (`og:image`), Twitter Cards, and canonical tags on all routes.
-* Embedded `SoftwareApplication` and `Organization` JSON-LD schemas covering multi-cloud availability.
+- Dynamic OpenGraph (`og:image`), Twitter Cards, and canonical tags on all routes.
+- Embedded `SoftwareApplication` and `Organization` JSON-LD schemas covering multi-cloud availability.
 
 ---
 
@@ -77,6 +76,7 @@ Copy and paste the prompt block below into your AI development pipeline or agent
 You are the Principal Product Designer, Frontend Lead, and UI/UX Director for Quality Impact OÜ (www.qa-paas.com). Your task is to build production-grade web pages and UI components for the QA-PaaS platform.
 
 ### BRAND & DESIGN TOKENS
+
 - Canvas Background: #0F172A (Deep Slate)
 - Surface Panels: #1E293B (Slate 800) / Border: #334155
 - Primary Accent: #0EA5E9 (Electric Cyan)
@@ -85,6 +85,7 @@ You are the Principal Product Designer, Frontend Lead, and UI/UX Director for Qu
 - Typography: Inter / Plus Jakarta Sans (UI) + JetBrains Mono (Code/Telemetry)
 
 ### MANDATORY ENGINEERING RULES
+
 1. CORPORATE & PRODUCT DISCLOSURE:
    - Always display "Quality Impact OÜ" as the parent vendor and "QA-PaaS" as the platform product.
    - Include clear cloud marketplace routing for AWS Marketplace, Azure DevOps Marketplace, and Google Cloud Marketplace.
@@ -98,7 +99,6 @@ You are the Principal Product Designer, Frontend Lead, and UI/UX Director for Qu
    - React Server Components by default; mark client interactivity with `'use client'`.
    - Include valid JSON-LD schemas for Organization and SoftwareApplication.
    - Return clean, executable TypeScript without placeholders or missing imports.
-
 ```
 
 ---
@@ -109,9 +109,9 @@ Here is a reference implementation of the QA-PaaS Marketplace Gateway and Corpor
 
 ### Phase 1: SEO Schema & Accessibility Spec
 
-* **Component:** `MarketplaceHero.tsx`
-* **JSON-LD:** `SoftwareApplication` linked to `Organization` (Quality Impact OÜ).
-* **Accessibility:** Screen-reader accessible routing tabs, focusable cloud badges, text contrast > **12:1**.
+- **Component:** `MarketplaceHero.tsx`
+- **JSON-LD:** `SoftwareApplication` linked to `Organization` (Quality Impact OÜ).
+- **Accessibility:** Screen-reader accessible routing tabs, focusable cloud badges, text contrast > **12:1**.
 
 ### Phase 2: Production Next.js 16 / React 19 Code
 
@@ -184,7 +184,7 @@ export const MarketplaceHero: React.FC = () => {
       <Script
         id="qa-paas-schema"
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON-stringify(jsonLdSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON - stringify(jsonLdSchema) }}
       />
 
       <div className="max-w-7xl mx-auto space-y-12">
@@ -203,7 +203,9 @@ export const MarketplaceHero: React.FC = () => {
           </h1>
 
           <p className="text-lg text-slate-400 font-sans leading-relaxed">
-            Provision QA-PaaS directly through your existing AWS, Azure, or Google Cloud enterprise agreement. Unified billing, high-compute test execution, and zero infrastructure friction.
+            Provision QA-PaaS directly through your existing AWS, Azure, or Google Cloud enterprise
+            agreement. Unified billing, high-compute test execution, and zero infrastructure
+            friction.
           </p>
         </div>
 
@@ -216,7 +218,9 @@ export const MarketplaceHero: React.FC = () => {
             >
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className={`text-[11px] font-mono font-semibold px-2.5 py-1 rounded-md border ${m.accentColor}`}>
+                  <span
+                    className={`text-[11px] font-mono font-semibold px-2.5 py-1 rounded-md border ${m.accentColor}`}
+                  >
                     {m.name}
                   </span>
                   <ShieldCheck className="w-5 h-5 text-[#10B981]" />
@@ -226,9 +230,7 @@ export const MarketplaceHero: React.FC = () => {
                   {m.badgeText}
                 </h2>
 
-                <p className="text-sm text-slate-400 font-sans leading-normal">
-                  {m.description}
-                </p>
+                <p className="text-sm text-slate-400 font-sans leading-normal">{m.description}</p>
               </div>
 
               <div className="pt-6 mt-6 border-t border-[#334155]/60 flex items-center justify-between">
@@ -266,7 +268,6 @@ export const MarketplaceHero: React.FC = () => {
     </section>
   );
 };
-
 ```
 
 ### Phase 3: Marketplace Deployment Checklist
@@ -287,6 +288,7 @@ GOOGLE CLOUD MARKETPLACE PROCUREMENT:
   2. Click "Enable" -> Select target GCP Project ID & Cloud Run Region.
 
 ```
+
 Here is the continuation of the master production web engineering system prompt.
 
 This section covers **SEO Meta-Architecture, Next.js 16 App Router Directory Topology, Accessibility (WCAG 2.1 AAA) Automated Verification Pipelines, and Security Header Configurations** tailored specifically for **Quality Impact OÜ** and **[www.qa-paas.com](https://www.qa-paas.com)**.
@@ -374,7 +376,6 @@ export const metadata: Metadata = {
     images: ['https://www.qa-paas.com/brand/og-marketplace-gateway.png'],
   },
 };
-
 ```
 
 ---
@@ -403,7 +404,7 @@ const nextConfig = {
               "img-src 'self' data: https://www.qa-paas.com https://aws.amazon.com https://marketplace.visualstudio.com",
               "connect-src 'self' https://api.qa-paas.com https://vitals.vercel-insights.com",
               "frame-ancestors 'none'",
-              "upgrade-insecure-requests",
+              'upgrade-insecure-requests',
             ].join('; '),
           },
           {
@@ -429,7 +430,6 @@ const nextConfig = {
 };
 
 module.exports = nextConfig;
-
 ```
 
 ---
@@ -465,5 +465,4 @@ test.describe('QA-PaaS Web Accessibility Verification (WCAG 2.1 AAA)', () => {
     await expect(firstFocusable).toHaveAttribute('aria-label', /Access QA-PaaS/i);
   });
 });
-
 ```
